@@ -1,18 +1,30 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS (RESET)
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif; /* Depois podemos trocar por uma fonte mais elegante */
 }
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. HEADER (CABEÇALHO)
+   ========================================= */
 .main-header {
     background-color: #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #eef2f1;
     width: 100%;
 }
 
 .container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -23,219 +35,184 @@
 .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     font-weight: bold;
     letter-spacing: 1px;
-    color: #2d4a3e; /* Verde escuro do design */
+    color: #1A3C34; /* Verde escuro */
+}
+
+.logo img {
+    height: 40px;
 }
 
 .nav ul {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     list-style: none;
-    gap: 80px;
+    gap: 40px;
 }
+
 .nav ul li a {
     text-decoration: none;
     color: #666;
     font-size: 14px;
+    font-weight: 500;
     transition: 0.3s;
 }
 
 .nav ul li a:hover {
-    color: #2d4a3e;
+    color: #4a7c66;
 }
 
 .btn-participar {
     text-decoration: none;
-    border: 1px solid #f0f0f0;
-    padding: 10px 25px;
-    border-radius: 5px;
-    color: #333;
+    border: 1px solid #eef2f1;
+    padding: 12px 28px;
+    border-radius: 6px;
+    color: #1A3C34;
     font-size: 12px;
     font-weight: bold;
     transition: 0.3s;
 }
 
 .btn-participar:hover {
-    background-color: #2d4a3e;
+    background-color: #1A3C34;
     color: white;
 }
 
-.container-grid {
-    max-width: 1200px;
-    margin: 0 auto;
+/* =========================================
+   3. SEÇÃO INTRO (CONTEÚDO PRINCIPAL)
+   ========================================= */
+.intro {
+    background-color: #ffffff; /* Fundo branco conforme a foto */
+    min-height: 80vh;
     display: flex;
-    align-items: center; /* Alinha o texto e os cards pelo topo */
-    gap: 60px; /* Espaço entre as duas colunas */
-    padding: 80px 20px;
+    align-items: stretch;
 }
 
+.container-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+}
+
+/* Base das Colunas 50/50 */
 .content {
-    flex: 1; /* Faz cada 'content' ocupar 50% do espaço */
+    flex: 1;
+    padding: 80px 40px;
     display: flex;
     flex-direction: column;
 }
 
-.intro {
-    background-color: #f9fbfb; /* Um cinza esverdeado bem clarinho como no design */
-    padding: 80px 0; /* Espaço em cima e embaixo */
-    min-height: 80vh;
+/* Linha Vertical de Divisão */
+.content-left {
+    border-right: 1px solid #eef2f1;
+    padding-left: 20px;
+}
+
+.content-right {
+    background-color: #f9fbfb; /* Lado dos cards tem fundo cinza claro */
+    padding-left: 60px;
+}
+
+/* =========================================
+   4. TEXTOS DA ESQUERDA
+   ========================================= */
+.subtitle {
     display: flex;
     align-items: center;
-}
-
-.card {
-    background: #ffffff;
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #eee;
-}
-
-.card h3 {
-    font-size: 32px;
-    color: #2d4a3e; /* Verde escuro */
-    margin-bottom: 5px;
-}
-
-.card h3 span {
-    font-size: 16px;
-    color: #88bdbc; /* Cor do 'ha' (hectares) */
-}
-
-.card p {
-    font-size: 12px;
-    font-weight: bold;
-    color: #999;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
-
-/* A linha decorativa embaixo do texto no card */
-.progress-bar {
-    height: 2px;
-    background-color: #2d4a3e;
-    width: 60%; /* Ela não ocupa o card todo, igual no desenho */
-    opacity: 0.3;
-}
-
-.content h1 {
-    font-size: 48px;
-    color: #1a1a1a;
-    line-height: 1.2;
-    margin: 20px 0;
-}
-
-.content h1 em {
-    font-style: italic;
-    color: #4a7c66; /* Verde médio para a palavra 'hoje' */
-}
-
-.content .subtitle {
     color: #88bdbc;
     font-weight: bold;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-.content p {
-    color: #666;
-    max-width: 450px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
-    gap: 100px; /* Grande espaçamento entre o texto e os cards */
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.content-text .subtitle {
-    display: flex;
-    align-items: flex-start;
-    color: #4a7c66; /* Verde sutil */
     font-size: 12px;
     letter-spacing: 2px;
     margin-bottom: 25px;
 }
 
-/* A linha antes do subtítulo */
-.content-text .subtitle::before {
+.subtitle::before {
     content: "";
     width: 30px;
     height: 1px;
-    background: #4a7c66;
+    background: #88bdbc;
     margin-right: 15px;
 }
 
-.content-text h1 {
-    font-size: 68px;
-    color: #1a3c34;
+.content h1 {
+    font-size: 64px;
+    color: #1A3C34;
     line-height: 1.1;
     margin-bottom: 30px;
+    font-weight: 700;
 }
 
-/* O "hoje" em itálico */
-.content-text h1 em {
+.content h1 em {
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     color: #4a7c66;
+    font-weight: 400;
 }
 
-/* Estilo dos cards */
+.content p {
+    color: #666;
+    max-width: 480px;
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.btn-secondary {
+    text-decoration: none;
+    color: #1A3C34;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* =========================================
+   5. CARDS DA DIREITA
+   ========================================= */
 .card {
-    background: #fff;
-    padding: 30px;
-    margin-bottom: 20px;
-    border: 1px solid #417461;
+    background: #ffffff;
+    padding: 35px;
+    margin-bottom: 25px;
     border-radius: 8px;
+    border: 1px solid #eef2f1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     width: 100%;
+    max-width: 450px;
 }
 
 .card h3 {
-    font-size: 36px;
-    color: #1a3c34;
-    margin-bottom: 5px;
+    font-size: 42px;
+    color: #1A3C34;
+    margin-bottom: 8px;
 }
 
 .card h3 span {
-    font-size: 16px;
+    font-size: 18px;
     color: #88bdbc;
+    font-weight: normal;
 }
 
 .card p {
     font-size: 11px;
+    font-weight: bold;
     color: #a0a0a0;
     letter-spacing: 1.5px;
-    font-weight: 600;
 }
 
-.card .line {
-    width: 10px;
-    height: 2px;
-    background: #4a7c66;
-    margin-top: 15px;
-}
-
+/* As Linhas de Divisão do Card */
 .line {
-    width: 100%; /* Largura total da linha cinza */
+    width: 100%;
     height: 1px;
     background-color: #eee;
-    margin-top: 15px;
+    margin-top: 20px;
     position: relative;
 }
 
-/* A parte verde da linha */
 .line::after {
     content: "";
     position: absolute;
     left: 0;
-    top: -1px; /* Alinha por cima da linha cinza */
-    width: 80px; /* Tamanho do destaque verde */
+    top: -1px;
+    width: 80px;
     height: 3px;
-    background-color: #2d4a3e;
+    background-color: #1A3C34;
 }
