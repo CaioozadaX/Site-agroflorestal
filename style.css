@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* Depois podemos trocar por uma fonte mais elegante */
+}
+
+.main-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    width: 100%;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #2d4a3e; /* Verde escuro do design */
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    gap: 80px;
+}
+.nav ul li a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav ul li a:hover {
+    color: #2d4a3e;
+}
+
+.btn-participar {
+    text-decoration: none;
+    border: 1px solid #f0f0f0;
+    padding: 10px 25px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-participar:hover {
+    background-color: #2d4a3e;
+    color: white;
+}
+
+.container-grid {
+    display: flex; /* Coloca os dois 'content' lado a lado */
+    gap: 40px;
+    align-items: center;
+}
+
+.content {
+    flex: 1; /* Faz cada 'content' ocupar 50% do espaço */
+}
