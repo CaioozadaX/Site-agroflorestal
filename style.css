@@ -63,11 +63,179 @@
 }
 
 .container-grid {
-    display: flex; /* Coloca os dois 'content' lado a lado */
-    gap: 40px;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Alinha o texto e os cards pelo topo */
+    gap: 60px; /* Espaço entre as duas colunas */
+    padding: 80px 20px;
 }
 
 .content {
     flex: 1; /* Faz cada 'content' ocupar 50% do espaço */
+    display: flex;
+    flex-direction: column;
+}
+
+.intro {
+    background-color: #f9fbfb; /* Um cinza esverdeado bem clarinho como no design */
+    padding: 80px 0; /* Espaço em cima e embaixo */
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.card h3 {
+    font-size: 32px;
+    color: #2d4a3e; /* Verde escuro */
+    margin-bottom: 5px;
+}
+
+.card h3 span {
+    font-size: 16px;
+    color: #88bdbc; /* Cor do 'ha' (hectares) */
+}
+
+.card p {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* A linha decorativa embaixo do texto no card */
+.progress-bar {
+    height: 2px;
+    background-color: #2d4a3e;
+    width: 60%; /* Ela não ocupa o card todo, igual no desenho */
+    opacity: 0.3;
+}
+
+.content h1 {
+    font-size: 48px;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.content h1 em {
+    font-style: italic;
+    color: #4a7c66; /* Verde médio para a palavra 'hoje' */
+}
+
+.content .subtitle {
+    color: #88bdbc;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.content p {
+    color: #666;
+    max-width: 450px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 100px; /* Grande espaçamento entre o texto e os cards */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.content-text .subtitle {
+    display: flex;
+    align-items: flex-start;
+    color: #4a7c66; /* Verde sutil */
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* A linha antes do subtítulo */
+.content-text .subtitle::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: #4a7c66;
+    margin-right: 15px;
+}
+
+.content-text h1 {
+    font-size: 68px;
+    color: #1a3c34;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+/* O "hoje" em itálico */
+.content-text h1 em {
+    font-style: italic;
+    color: #4a7c66;
+}
+
+/* Estilo dos cards */
+.card {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid #417461;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.card h3 {
+    font-size: 36px;
+    color: #1a3c34;
+    margin-bottom: 5px;
+}
+
+.card h3 span {
+    font-size: 16px;
+    color: #88bdbc;
+}
+
+.card p {
+    font-size: 11px;
+    color: #a0a0a0;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.card .line {
+    width: 10px;
+    height: 2px;
+    background: #4a7c66;
+    margin-top: 15px;
+}
+
+.line {
+    width: 100%; /* Largura total da linha cinza */
+    height: 1px;
+    background-color: #eee;
+    margin-top: 15px;
+    position: relative;
+}
+
+/* A parte verde da linha */
+.line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px; /* Alinha por cima da linha cinza */
+    width: 80px; /* Tamanho do destaque verde */
+    height: 3px;
+    background-color: #2d4a3e;
 }
