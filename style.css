@@ -19,17 +19,18 @@ body {
    ========================================= */
 .main-header {
     background-color: #ffffff;
-    border-bottom: 1px solid #eef2f1;
+    border-bottom: 1px solid #4a7c669a;
     width: 100%;
+    padding-top: 5px;
 }
 
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin:  auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px 30px;
 }
 
 .logo {
@@ -53,10 +54,12 @@ body {
 
 .nav ul li a {
     text-decoration: none;
-    color: #666;
-    font-size: 14px;
+    color: #398b77;
+    font-size: 18px;
     font-weight: 500;
     transition: 0.3s;
+    
+    
 }
 
 .nav ul li a:hover {
@@ -65,7 +68,7 @@ body {
 
 .btn-participar {
     text-decoration: none;
-    border: 1px solid #eef2f1;
+    border: 1px solid #497c6f;
     padding: 12px 28px;
     border-radius: 6px;
     color: #1A3C34;
@@ -90,7 +93,7 @@ body {
 }
 
 .container-grid {
-    max-width: 1400px;
+    max-width: 1900px;
     margin: 0 auto;
     display: flex;
     width: 100%;
@@ -99,20 +102,20 @@ body {
 /* Base das Colunas 50/50 */
 .content {
     flex: 1;
-    padding: 80px 40px;
+    padding: 80px 100px;
     display: flex;
     flex-direction: column;
 }
 
 /* Linha Vertical de Divisão */
 .content-left {
-    border-right: 1px solid #eef2f1;
-    padding-left: 20px;
+    border-right: 1px solid #4a7c668f;
+    padding-left: 100px;
 }
 
 .content-right {
-    background-color: #f9fbfb; /* Lado dos cards tem fundo cinza claro */
-    padding-left: 60px;
+    background-color: #a0c2b644; /* Lado dos cards tem fundo cinza claro */
+    padding-left: 90px;
 }
 
 /* =========================================
@@ -173,10 +176,10 @@ body {
     padding: 35px;
     margin-bottom: 25px;
     border-radius: 8px;
-    border: 1px solid #eef2f1;
+    border: 1px solid #4a7c6683;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     width: 100%;
-    max-width: 450px;
+    max-width: 700px;
 }
 
 .card h3 {
