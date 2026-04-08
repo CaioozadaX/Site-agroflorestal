@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <title>Ecologi+ | Sobre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        .main-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #4a7c669a;
+            width: 100%;
+            padding-top: 5px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #1A3C34;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 5px;
+        }
+
+        .nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #398b77;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav ul li a:hover,
+        .nav ul li a.active {
+            color: #1A3C34;
+            font-weight: 700;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+        .page-hero {
+            border-bottom: 1px solid #4a7c668f;
+            padding: 80px 100px 60px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            color: #88bdbc;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #88bdbc;
+            margin-right: 15px;
+        }
+
+        .page-hero h1 {
+            font-size: 58px;
+            color: #1A3C34;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .page-hero h1 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .hero-right p {
+            color: #4a7c66;
+            font-size: 17px;
+            max-width: 420px;
+        }
+
+        /* =========================================
+           MISSÃO / VALORES (3 colunas)
+        ========================================= */
+        .pillars-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .pillar {
+            padding: 60px 55px;
+            border-right: 1px solid #4a7c668f;
+            transition: background 0.3s;
+        }
+
+        .pillar:last-child { border-right: none; }
+
+        .pillar:hover { background: #f9fbfa; }
+
+        .pillar-icon {
+            font-size: 36px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .pillar-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #88bdbc;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-label::before {
+            content: "";
+            width: 20px;
+            height: 1px;
+            background: #88bdbc;
+        }
+
+        .pillar h3 {
+            font-size: 24px;
+            color: #1A3C34;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .pillar p {
+            color: #4a7c66;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           HISTÓRIA (linha do tempo)
+        ========================================= */
+        .history-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .section-header .section-label::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #88bdbc;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: #1A3C34;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .section-header h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: #4a7c6640;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 48px 40px;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #1A3C34;
+            transition: background 0.3s;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: #1A3C34;
+        }
+
+        .timeline-year {
+            font-size: 11px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item h4 {
+            font-size: 20px;
+            color: #1A3C34;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #4a7c66;
+            font-size: 15px;
+            max-width: 680px;
+        }
+
+        /* =========================================
+           EQUIPE
+        ========================================= */
+        .team-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+            background: #f9fbfa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: white;
+            border: 1px solid #4a7c6630;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .team-card:hover {
+            box-shadow: 0 12px 40px rgba(26, 60, 52, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .team-avatar {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+        }
+
+        .avatar-bg1 { background: linear-gradient(135deg, #c8e6c9, #a5d6a7); }
+        .avatar-bg2 { background: linear-gradient(135deg, #b2dfdb, #80cbc4); }
+        .avatar-bg3 { background: linear-gradient(135deg, #dcedc8, #c5e1a5); }
+        .avatar-bg4 { background: linear-gradient(135deg, #e8f5e9, #a5d6a7); }
+
+        .team-info {
+            padding: 24px 22px;
+        }
+
+        .team-info h4 {
+            font-size: 17px;
+            color: #1A3C34;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .team-info span {
+            font-size: 11px;
+            font-weight: 600;
+            color: #88bdbc;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .team-info p {
+            font-size: 13px;
+            color: #4a7c66;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           NÚMEROS
+        ========================================= */
+        .numbers-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .numbers-left h2 {
+            font-size: 40px;
+            color: #1A3C34;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .numbers-left h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .numbers-left p {
+            color: #4a7c66;
+            font-size: 16px;
+            max-width: 420px;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: #4a7c6630;
+            border: 1px solid #4a7c6630;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .number-cell {
+            background: white;
+            padding: 40px 36px;
+            transition: background 0.3s;
+        }
+
+        .number-cell:hover { background: #f9fbfa; }
+
+        .number-cell strong {
+            display: block;
+            font-size: 46px;
+            color: #1A3C34;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .number-cell span {
+            font-size: 10px;
+            font-weight: 700;
+            color: #a0a0a0;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .number-cell .bar {
+            width: 100%;
+            height: 3px;
+            background: #eee;
+            border-radius: 2px;
+            margin-top: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-cell .bar::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #1A3C34;
+            border-radius: 2px;
+            animation: growBar 1.2s ease forwards;
+        }
+
+        .bar-w80::after  { width: 80%; }
+        .bar-w60::after  { width: 60%; }
+        .bar-w100::after { width: 100%; }
+        .bar-w40::after  { width: 40%; }
+
+        @keyframes growBar {
+            from { width: 0; }
+        }
+
+        /* =========================================
+           PARCEIROS
+        ========================================= */
+        .partners-section {
+            padding: 70px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .partners-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 50px;
+        }
+
+        .partner-badge {
+            border: 1px solid #4a7c6640;
+            border-radius: 8px;
+            padding: 18px 32px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1A3C34;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .partner-badge:hover {
+            background: #1A3C34;
+            color: white;
+            border-color: #1A3C34;
+        }
+
+        /* =========================================
+           CTA BANNER
+        ========================================= */
+        .cta-banner {
+            margin: 0 100px 70px 100px;
+            background-color: #1A3C34;
+            border-radius: 12px;
+            padding: 60px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cta-banner h2 {
+            font-size: 38px;
+            color: white;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .cta-banner h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #88bdbc;
+            font-weight: 400;
+        }
+
+        .cta-banner p {
+            color: #88bdbc;
+            font-size: 16px;
+            max-width: 380px;
+            margin-top: 12px;
+        }
+
+        .btn-cta-white {
+            text-decoration: none;
+            background: white;
+            padding: 16px 36px;
+            border-radius: 6px;
+            color: #1A3C34;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .btn-cta-white:hover { background: #88bdbc; color: #1A3C34; }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Ecologi+ Logo">
+                <span>ECOLOGI+</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="#">Impacto</a></li>
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="hero-left">
+                <span class="subtitle">QUEM SOMOS</span>
+                <h1>Uma causa,<br>uma <em>missão,</em><br>um território.</h1>
+            </div>
+            <div class="hero-right">
+                <p>A Ecologi+ nasceu da convicção de que recuperar a natureza é também recuperar comunidades. Desde 2018,
+                    atuamos no Sul do Brasil unindo ciência, voluntariado e parcerias para transformar ecossistemas degradados.</p>
+            </div>
+        </section>
+
+        <!-- MISSÃO / VISÃO / VALORES -->
+        <section class="pillars-section">
+            <div class="pillar">
+                <span class="pillar-icon">🌿</span>
+                <div class="pillar-label">Missão</div>
+                <h3>Por que existimos</h3>
+                <p>Recuperar ecossistemas degradados do Sul do Brasil por meio de reflorestamento, educação ambiental e
+                    parcerias comunitárias, gerando impacto mensurável e duradouro.</p>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">🔭</span>
+                <div class="pillar-label">Visão</div>
+                <h3>Para onde vamos</h3>
+                <p>Ser referência nacional em restauração de ecossistemas, conectando florestas, rios e comunidades em
+                    um Brasil que protege sua biodiversidade de maneira ativa e permanente.</p>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">⚖️</span>
+                <div class="pillar-label">Valores</div>
+                <h3>Como fazemos</h3>
+                <p>Transparência nos resultados, ciência como base, comunidade no centro e colaboração acima de tudo.
+                    Cada ação é planejada para gerar impacto real e verificável.</p>
+            </div>
+        </section>
+
+        <!-- HISTÓRIA -->
+        <section class="history-section">
+            <div class="section-header">
+                <div class="section-label">Nossa trajetória</div>
+                <h2>Uma história de<br><em>raízes profundas.</em></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2018</div>
+                    <h4>O começo</h4>
+                    <p>Um grupo de biólogos e engenheiros florestais curitibanos se reúne para o primeiro mutirão de plantio
+                       no Rio Tibagi. 120 mudas plantadas, um projeto nascendo.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2019</div>
+                    <h4>Primeira parceria institucional</h4>
+                    <p>Firmamos convênio com a UFPR e o IAT-PR para monitoramento científico das áreas restauradas,
+                       garantindo rigor técnico em cada intervenção.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2021</div>
+                    <h4>Expansão para Santa Catarina</h4>
+                    <p>Lançamos o projeto Corredor da Araucária, recuperando 160 hectares de Floresta Ombrófila Mista
+                       e plantando 1.900 araucárias em parceria com municípios catarinenses.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2023</div>
+                    <h4>Programa Escola Verde</h4>
+                    <p>Iniciamos o braço educacional da Ecologi+, alcançando mais de 1.200 alunos em 22 escolas públicas
+                       da Região Metropolitana de Curitiba.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2025</div>
+                    <h4>Hoje</h4>
+                    <p>Mais de 12.400 mudas plantadas, 280 hectares preservados e 340 voluntários ativos. A floresta cresce
+                       junto com a nossa rede.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPE -->
+        <section class="team-section">
+            <div class="section-header">
+                <div class="section-label">As pessoas</div>
+                <h2>Quem <em>move</em> a floresta.</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar avatar-bg1">🌳</div>
+                    <div class="team-info">
+                        <h4>Ana Ribeiro</h4>
+                        <span>Fundadora & Diretora</span>
+                        <p>Bióloga com 15 anos de experiência em restauração ecológica no bioma Mata Atlântica.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar avatar-bg2">🌊</div>
+                    <div class="team-info">
+                        <h4>Carlos Menezes</h4>
+                        <span>Eng. Florestal Chefe</span>
+                        <p>Especialista em sistemas agroflorestais e recuperação de matas ciliares no Sul do Brasil.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar avatar-bg3">🌱</div>
+                    <div class="team-info">
+                        <h4>Fernanda Luz</h4>
+                        <span>Coordenadora de Voluntários</span>
+                        <p>Gestora de projetos socioambientais com foco em mobilização comunitária e educação.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar avatar-bg4">🦋</div>
+                    <div class="team-info">
+                        <h4>Rafael Costa</h4>
+                        <span>Pesquisador de Biodiversidade</span>
+                        <p>Doutor em ecologia pela UFPR, responsável pelo monitoramento de fauna e flora nos projetos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NÚMEROS -->
+        <section class="numbers-section">
+            <div class="numbers-left">
+                <div class="section-label" style="font-size:11px;font-weight:700;color:#88bdbc;letter-spacing:2px;display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <span style="width:30px;height:1px;background:#88bdbc;display:block;"></span>
+                    Impacto em números
+                </div>
+                <h2>Resultados que<br>a floresta<br><em>confirma.</em></h2>
+                <p style="margin-top:20px;">Cada número aqui representa uma nascente protegida, uma família
+                    assistida, uma espécie que voltou a florescer. Acompanhe nossos relatórios de impacto abertos ao público.</p>
+            </div>
+            <div class="numbers-grid">
+                <div class="number-cell">
+                    <strong>12.400</strong>
+                    <span>Mudas plantadas</span>
+                    <div class="bar bar-w80"></div>
+                </div>
+                <div class="number-cell">
+                    <strong>280 ha</strong>
+                    <span>Área preservada</span>
+                    <div class="bar bar-w60"></div>
+                </div>
+                <div class="number-cell">
+                    <strong>340</strong>
+                    <span>Voluntários ativos</span>
+                    <div class="bar bar-w100"></div>
+                </div>
+                <div class="number-cell">
+                    <strong>6</strong>
+                    <span>Projetos em curso</span>
+                    <div class="bar bar-w40"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARCEIROS -->
+        <section class="partners-section">
+            <div class="section-header">
+                <div class="section-label">Parceiros</div>
+                <h2>Quem acredita<br>nessa <em>causa.</em></h2>
+            </div>
+            <div class="partners-row">
+                <div class="partner-badge">UFPR</div>
+                <div class="partner-badge">IAT — Paraná</div>
+                <div class="partner-badge">Prefeitura de Curitiba</div>
+                <div class="partner-badge">SEBRAE PR</div>
+                <div class="partner-badge">Fundação Grupo Boticário</div>
+                <div class="partner-badge">SOS Mata Atlântica</div>
+                <div class="partner-badge">EMBRAPA Florestas</div>
+                <div class="partner-badge">Aliança pela Restauração</div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-banner">
+            <div>
+                <h2>Faça parte de algo<br><em>maior que você.</em></h2>
+                <p>Seja como voluntário, doador ou parceiro — sua contribuição transforma ecossistemas e vidas.</p>
+            </div>
+            <a href="participar.html" class="btn-cta-white">QUERO PARTICIPAR →</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
