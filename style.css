@@ -52,48 +52,27 @@ body {
 
 .nav ul {
     display: flex;
+    justify-content: center; /* CENTRALIZA */
+    align-items: center;
     list-style: none;
     gap: 40px;
+    font-family: ui-monospace;
 }
 
 .nav ul li a {
+    display: inline-block;
     text-decoration: none;
     color: #398b77;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
-    transform: translateX(400px) scale(1);
-    transition: transform 0.3s ease;
-    
+    transition: transform 0.25s ease, color 0.25s ease;
     
 }
 
 .nav ul li a:hover {
-    color: #4a7c66;
-    transform: translateX(400px) scale(1.1);
-    animation: navHover 0.4s ease;
-    animation: navEnter 0.3s ease forwards;
-
-    
+    color: #1A3C34;
+    transform: scale(1.15);
 }
-
-@keyframes navEnter {
-    from {
-        transform: translateX(400px) scale(1);
-    }
-    to {
-        transform: translateX(400px) scale(1.1);
-    }
-}
-
-@keyframes navleave {
-    from {
-        transform: translateX(400px) scale(1);
-    }
-    to {
-        transform: translateX(400px) scale(1.1);
-    }
-}
-
 
 .btn-participar {
     text-decoration: none;
@@ -214,6 +193,7 @@ body {
     max-width: 480px;
     margin-bottom: 40px;
     font-size: 20px;
+    font-family: ui-monospace;
 }
 
 .btn-secondary {
