@@ -7,6 +7,8 @@
     box-sizing: border-box;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #ffffff;
@@ -34,14 +36,18 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0%;
     font-weight: bold;
     letter-spacing: 1px;
-    color: #1A3C34; 
+    color: #1A3C34; /* Verde escuro */
+    
 }
 
 .logo img {
     height: 40px;
+    background: transparent;
+    margin-right: 5px;
+    
 }
 
 .nav ul {
@@ -136,6 +142,27 @@ body {
     padding-left: 100px;
 }
 
+
+.left-action {
+    text-decoration: none;
+    border: 1px solid #497c6f;
+    padding: 12px 10px;
+    border-radius: 6px;
+    color: #497c6f;
+    font-size: 13px;
+    font-weight: bold;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin-top: -33px;
+    transition: 0.3s;
+}
+
+.left-action:hover {
+    background-color: #1A3C34;
+    color: white;
+}
+
 .content-right {
     background-color: #a0c2b644; /* Lado dos cards tem fundo cinza claro */
     padding-left: 90px;
@@ -162,6 +189,11 @@ body {
     margin-right: 15px;
 }
 
+.descriçao {
+    color: rgb(0, 255, 145);
+
+}
+
 .content h1 {
     font-size: 64px;
     color: #1A3C34;
@@ -178,10 +210,10 @@ body {
 }
 
 .content p {
-    color: #666;
+    color: #4a7c66;
     max-width: 480px;
     margin-bottom: 40px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .btn-secondary {
@@ -189,6 +221,11 @@ body {
     color: #1A3C34;
     font-weight: bold;
     font-size: 15px;
+    display: block;
+    margin: 15px auto 0 auto;
+    text-align: center;
+    
+    
 }
 
 /* =========================================
