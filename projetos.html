@@ -11,9 +11,6 @@
         rel="stylesheet">
     <title>Ecologi+ | Projetos</title>
     <style>
-        /* =========================================
-           RESET & BASE
-        ========================================= */
         * {
             margin: 0;
             padding: 0;
@@ -31,9 +28,6 @@
             line-height: 1.6;
         }
 
-        /* =========================================
-           HEADER
-        ========================================= */
         .main-header {
             background-color: #ffffff;
             border-bottom: 1px solid #4a7c669a;
@@ -91,9 +85,7 @@
             font-weight: 700;
         }
 
-        /* =========================================
-           HERO DA PÁGINA DE PROJETOS
-        ========================================= */
+        /* HERO */
         .page-hero {
             border-bottom: 1px solid #4a7c668f;
             padding: 80px 100px 60px 100px;
@@ -145,9 +137,28 @@
             margin-bottom: 28px;
         }
 
-        /* =========================================
-           FILTROS
-        ========================================= */
+        /* ── BOTÃO VER TODOS ── */
+        .btn-ver-todos {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1A3C34;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1A3C34;
+            transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-ver-todos:hover {
+            color: #4a7c66;
+            border-color: #4a7c66;
+            gap: 16px;
+        }
+
+        /* FILTROS */
         .filters-bar {
             padding: 30px 100px;
             display: flex;
@@ -178,9 +189,7 @@
             border-color: #1A3C34;
         }
 
-        /* =========================================
-           GRID DE PROJETOS
-        ========================================= */
+        /* GRID */
         .projects-section {
             padding: 70px 100px;
         }
@@ -191,7 +200,6 @@
             gap: 30px;
         }
 
-        /* Card grande ocupa 2 colunas */
         .project-card.featured {
             grid-column: span 2;
         }
@@ -226,7 +234,6 @@
             height: 200px;
         }
 
-        /* Placeholder visual para imagem */
         .card-image-inner {
             width: 100%;
             height: 100%;
@@ -236,25 +243,11 @@
             font-size: 52px;
         }
 
-        .card-image-inner.bg1 {
-            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
-        }
-
-        .card-image-inner.bg2 {
-            background: linear-gradient(135deg, #b2dfdb 0%, #80cbc4 100%);
-        }
-
-        .card-image-inner.bg3 {
-            background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%);
-        }
-
-        .card-image-inner.bg4 {
-            background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);
-        }
-
-        .card-image-inner.bg5 {
-            background: linear-gradient(135deg, #b2ebf2 0%, #80deea 100%);
-        }
+        .card-image-inner.bg1 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); }
+        .card-image-inner.bg2 { background: linear-gradient(135deg, #b2dfdb 0%, #80cbc4 100%); }
+        .card-image-inner.bg3 { background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%); }
+        .card-image-inner.bg4 { background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%); }
+        .card-image-inner.bg5 { background: linear-gradient(135deg, #b2ebf2 0%, #80deea 100%); }
 
         .card-tag {
             position: absolute;
@@ -280,23 +273,9 @@
             border-radius: 4px;
         }
 
-        .card-status.em-andamento {
-            background: #fff8e1;
-            color: #f9a825;
-            border: 1px solid #f9a82560;
-        }
-
-        .card-status.concluido {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #2e7d3260;
-        }
-
-        .card-status.planejamento {
-            background: #e3f2fd;
-            color: #1565c0;
-            border: 1px solid #1565c060;
-        }
+        .card-status.em-andamento { background: #fff8e1; color: #f9a825; border: 1px solid #f9a82560; }
+        .card-status.concluido    { background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d3260; }
+        .card-status.planejamento { background: #e3f2fd; color: #1565c0; border: 1px solid #1565c060; }
 
         .card-body {
             padding: 28px 30px;
@@ -313,9 +292,7 @@
             line-height: 1.3;
         }
 
-        .project-card.featured .card-body h2 {
-            font-size: 28px;
-        }
+        .project-card.featured .card-body h2 { font-size: 28px; }
 
         .card-body p {
             color: #4a7c66;
@@ -332,29 +309,11 @@
             border-top: 1px solid #eee;
         }
 
-        .card-stats {
-            display: flex;
-            gap: 20px;
-        }
+        .card-stats { display: flex; gap: 20px; }
 
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-item strong {
-            font-size: 15px;
-            color: #1A3C34;
-            font-weight: 700;
-        }
-
-        .stat-item span {
-            font-size: 10px;
-            color: #a0a0a0;
-            letter-spacing: 1px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-item strong { font-size: 15px; color: #1A3C34; font-weight: 700; }
+        .stat-item span   { font-size: 10px; color: #a0a0a0; letter-spacing: 1px; font-weight: 600; text-transform: uppercase; }
 
         .btn-card {
             text-decoration: none;
@@ -368,15 +327,9 @@
             white-space: nowrap;
         }
 
-        .btn-card:hover {
-            background-color: #1A3C34;
-            color: white;
-        }
+        .btn-card:hover { background-color: #1A3C34; color: white; }
 
-        /* Progresso */
-        .progress-bar-wrap {
-            margin-bottom: 20px;
-        }
+        .progress-bar-wrap { margin-bottom: 20px; }
 
         .progress-label {
             display: flex;
@@ -403,9 +356,7 @@
             border-radius: 2px;
         }
 
-        /* =========================================
-           BANNER CTA
-        ========================================= */
+        /* CTA BANNER */
         .cta-banner {
             margin: 0 100px 70px 100px;
             background-color: #1A3C34;
@@ -417,12 +368,7 @@
             gap: 40px;
         }
 
-        .cta-banner h2 {
-            font-size: 38px;
-            color: white;
-            font-weight: 700;
-            line-height: 1.2;
-        }
+        .cta-banner h2 { font-size: 38px; color: white; font-weight: 700; line-height: 1.2; }
 
         .cta-banner h2 em {
             font-family: 'Playfair Display', serif;
@@ -431,12 +377,7 @@
             font-weight: 400;
         }
 
-        .cta-banner p {
-            color: #88bdbc;
-            font-size: 16px;
-            max-width: 380px;
-            margin-top: 12px;
-        }
+        .cta-banner p { color: #88bdbc; font-size: 16px; max-width: 380px; margin-top: 12px; }
 
         .btn-cta-white {
             text-decoration: none;
@@ -451,23 +392,18 @@
             transition: 0.3s;
         }
 
-        .btn-cta-white:hover {
-            background: #88bdbc;
-            color: #1A3C34;
-        }
+        .btn-cta-white:hover { background: #88bdbc; color: #1A3C34; }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
     <header class="main-header">
         <div class="container">
             <div class="logo">
                 <img src="img/logo.png" alt="Ecologi+ Logo">
                 <span>ECOLOGI+</span>
             </div>
-
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -482,7 +418,6 @@
 
     <main>
 
-        <!-- HERO -->
         <section class="page-hero">
             <div class="page-hero-left">
                 <span class="subtitle">NOSSOS PROJETOS</span>
@@ -491,11 +426,10 @@
             <div class="page-hero-right">
                 <p>Conheça as iniciativas que estamos desenvolvendo para recuperar ecossistemas, plantar mudas e
                     fortalecer comunidades sustentáveis em todo o Brasil.</p>
-                <a href="#projetos" class="btn-participar">VER TODOS →</a>
+                <a href="#projetos" class="btn-ver-todos">VER TODOS →</a>
             </div>
         </section>
 
-        <!-- FILTROS -->
         <div class="filters-bar">
             <button class="filter-btn active">Todos</button>
             <button class="filter-btn">Reflorestamento</button>
@@ -506,11 +440,9 @@
             <button class="filter-btn">Concluídos</button>
         </div>
 
-        <!-- GRID DE PROJETOS -->
         <section class="projects-section" id="projetos">
             <div class="projects-grid">
 
-                <!-- Card em destaque -->
                 <div class="project-card featured">
                     <div class="card-image">
                         <div class="card-image-inner bg1">🌳</div>
@@ -522,35 +454,22 @@
                         <p>Restauração de 120 hectares de Mata Atlântica degradada ao longo do rio Tibagi, reconectando
                             fragmentos florestais e protegendo nascentes essenciais para comunidades rurais.</p>
                         <div class="progress-bar-wrap">
-                            <div class="progress-label">
-                                <span>Progresso</span>
-                                <span>67%</span>
-                            </div>
+                            <div class="progress-label"><span>Progresso</span><span>67%</span></div>
                             <div class="progress-bar-track">
                                 <div class="progress-bar-fill" style="width: 67%;"></div>
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>8.400</strong>
-                                    <span>Mudas</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>120 ha</strong>
-                                    <span>Área</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>142</strong>
-                                    <span>Voluntários</span>
-                                </div>
+                                <div class="stat-item"><strong>8.400</strong><span>Mudas</span></div>
+                                <div class="stat-item"><strong>120 ha</strong><span>Área</span></div>
+                                <div class="stat-item"><strong>142</strong><span>Voluntários</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver detalhes →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card pequeno 1 -->
                 <div class="project-card">
                     <div class="card-image">
                         <div class="card-image-inner bg2">💧</div>
@@ -563,21 +482,14 @@
                             beneficiando 3 municípios.</p>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>18</strong>
-                                    <span>Nascentes</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>3</strong>
-                                    <span>Municípios</span>
-                                </div>
+                                <div class="stat-item"><strong>18</strong><span>Nascentes</span></div>
+                                <div class="stat-item"><strong>3</strong><span>Municípios</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card pequeno 2 -->
                 <div class="project-card">
                     <div class="card-image">
                         <div class="card-image-inner bg3">🌱</div>
@@ -589,31 +501,21 @@
                         <p>Implantação de sistemas agroflorestais em pequenas propriedades familiares, unindo produção
                             de alimentos e conservação.</p>
                         <div class="progress-bar-wrap">
-                            <div class="progress-label">
-                                <span>Progresso</span>
-                                <span>45%</span>
-                            </div>
+                            <div class="progress-label"><span>Progresso</span><span>45%</span></div>
                             <div class="progress-bar-track">
                                 <div class="progress-bar-fill" style="width: 45%;"></div>
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>54</strong>
-                                    <span>Famílias</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>2.100</strong>
-                                    <span>Mudas</span>
-                                </div>
+                                <div class="stat-item"><strong>54</strong><span>Famílias</span></div>
+                                <div class="stat-item"><strong>2.100</strong><span>Mudas</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card pequeno 3 -->
                 <div class="project-card">
                     <div class="card-image">
                         <div class="card-image-inner bg4">📚</div>
@@ -626,21 +528,14 @@
                             sustentabilidade em Curitiba e região.</p>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>1.200</strong>
-                                    <span>Alunos</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>22</strong>
-                                    <span>Escolas</span>
-                                </div>
+                                <div class="stat-item"><strong>1.200</strong><span>Alunos</span></div>
+                                <div class="stat-item"><strong>22</strong><span>Escolas</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card pequeno 4 -->
                 <div class="project-card">
                     <div class="card-image">
                         <div class="card-image-inner bg5">🌊</div>
@@ -653,21 +548,14 @@
                             do Rio Iguaçu.</p>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>40 km</strong>
-                                    <span>Extensão</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>2025</strong>
-                                    <span>Início</span>
-                                </div>
+                                <div class="stat-item"><strong>40 km</strong><span>Extensão</span></div>
+                                <div class="stat-item"><strong>2025</strong><span>Início</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card grande 2 -->
                 <div class="project-card featured">
                     <div class="card-image">
                         <div class="card-image-inner bg1"
@@ -681,28 +569,16 @@
                         <p>Reintrodução e monitoramento de espécies nativas da Floresta com Araucária, com plantio de
                             1.900 mudas de araucária e espécies associadas em áreas estratégicas do Paraná.</p>
                         <div class="progress-bar-wrap">
-                            <div class="progress-label">
-                                <span>Concluído</span>
-                                <span>100%</span>
-                            </div>
+                            <div class="progress-label"><span>Concluído</span><span>100%</span></div>
                             <div class="progress-bar-track">
                                 <div class="progress-bar-fill" style="width: 100%; background: #4a7c66;"></div>
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="card-stats">
-                                <div class="stat-item">
-                                    <strong>1.900</strong>
-                                    <span>Araucárias</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>160 ha</strong>
-                                    <span>Área</span>
-                                </div>
-                                <div class="stat-item">
-                                    <strong>89</strong>
-                                    <span>Voluntários</span>
-                                </div>
+                                <div class="stat-item"><strong>1.900</strong><span>Araucárias</span></div>
+                                <div class="stat-item"><strong>160 ha</strong><span>Área</span></div>
+                                <div class="stat-item"><strong>89</strong><span>Voluntários</span></div>
                             </div>
                             <a href="#" class="btn-card">Ver detalhes →</a>
                         </div>
@@ -712,7 +588,6 @@
             </div>
         </section>
 
-        <!-- BANNER CTA -->
         <div class="cta-banner">
             <div>
                 <h2>Faça parte de algo<br><em>maior que você.</em></h2>
@@ -724,7 +599,6 @@
     </main>
 
     <script>
-        // Filtros interativos
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
