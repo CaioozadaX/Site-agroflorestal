@@ -33,6 +33,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
+    position: relative;
 }
 
 .logo {
@@ -50,6 +51,12 @@ body {
     background: transparent;
     margin-right: 5px;
     
+}
+
+.nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .nav ul {
