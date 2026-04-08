@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <title>Ecologi+ | Contato</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #333; line-height: 1.6; }
+
+        /* HEADER */
+        .main-header { background-color: #ffffff; border-bottom: 1px solid #4a7c669a; width: 100%; padding-top: 5px; }
+        .container { max-width: 100%; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: relative; }
+        .logo { display: flex; align-items: center; font-weight: bold; letter-spacing: 1px; color: #1A3C34; }
+        .logo img { height: 40px; margin-right: 5px; }
+        .nav { position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav ul { display: flex; list-style: none; gap: 40px; }
+        .nav ul li a { text-decoration: none; color: #398b77; font-size: 18px; font-weight: 500; transition: 0.3s; }
+        .nav ul li a:hover, .nav ul li a.active { color: #1A3C34; font-weight: 700; }
+
+        /* HERO */
+        .page-hero {
+            border-bottom: 1px solid #4a7c668f;
+            padding: 80px 100px 60px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            color: #88bdbc;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #88bdbc;
+            margin-right: 15px;
+        }
+
+        .page-hero h1 { font-size: 58px; color: #1A3C34; line-height: 1.1; font-weight: 700; }
+        .page-hero h1 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+        .hero-right p { color: #4a7c66; font-size: 17px; max-width: 400px; }
+
+        /* CANAIS */
+        .channels-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .channel {
+            padding: 55px 55px;
+            border-right: 1px solid #4a7c668f;
+            transition: background 0.3s;
+            cursor: default;
+        }
+
+        .channel:last-child { border-right: none; }
+        .channel:hover { background: #f9fbfa; }
+
+        .channel-icon {
+            width: 48px;
+            height: 48px;
+            background: #a0c2b644;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .channel-icon svg { width: 22px; height: 22px; stroke: #1A3C34; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+        .channel-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .channel-label::before { content: ""; width: 20px; height: 1px; background: #88bdbc; }
+        .channel h3 { font-size: 22px; color: #1A3C34; font-weight: 700; margin-bottom: 10px; }
+        .channel p { color: #4a7c66; font-size: 15px; margin-bottom: 16px; }
+        .channel a { color: #1A3C34; font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #4a7c6650; padding-bottom: 2px; transition: 0.3s; }
+        .channel a:hover { color: #4a7c66; border-color: #4a7c66; }
+
+        /* FORMULÁRIO + MAPA */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .contact-form-wrap {
+            padding: 70px 80px 70px 100px;
+            border-right: 1px solid #4a7c668f;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .section-label::before { content: ""; width: 30px; height: 1px; background: #88bdbc; }
+
+        .contact-form-wrap h2 { font-size: 38px; color: #1A3C34; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+        .contact-form-wrap h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+        .contact-form-wrap > p { color: #4a7c66; font-size: 15px; margin-bottom: 36px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 700; color: #1A3C34; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #4a7c6650;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #1A3C34;
+            background: white;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1A3C34; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .form-check { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 26px; }
+        .form-check input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: #1A3C34; cursor: pointer; }
+        .form-check label { font-size: 13px; color: #4a7c66; cursor: pointer; }
+
+        .btn-submit {
+            width: 100%;
+            background: #1A3C34;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-submit:hover { background: #4a7c66; }
+
+        /* SUCESSO */
+        .success-msg { display: none; text-align: center; padding: 60px 0; }
+        .success-msg .check { font-size: 52px; margin-bottom: 16px; }
+        .success-msg h3 { font-size: 26px; color: #1A3C34; font-weight: 700; margin-bottom: 10px; }
+        .success-msg p { color: #4a7c66; font-size: 15px; }
+
+        /* MAPA / INFO */
+        .contact-info-wrap {
+            padding: 70px 80px;
+            background: #f9fbfa;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .contact-info-wrap h2 { font-size: 28px; color: #1A3C34; font-weight: 700; margin-bottom: 8px; }
+        .contact-info-wrap > p { color: #4a7c66; font-size: 15px; margin-bottom: 32px; }
+
+        #mapa-contato {
+            width: 100%;
+            height: 260px;
+            border-radius: 10px;
+            border: 1px solid #4a7c6650;
+            margin-bottom: 32px;
+        }
+
+        .info-list { display: flex; flex-direction: column; gap: 0; }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #4a7c6630;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            background: #a0c2b644;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg { width: 17px; height: 17px; stroke: #1A3C34; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+        .info-row strong { display: block; font-size: 13px; color: #1A3C34; font-weight: 700; margin-bottom: 3px; }
+        .info-row span { font-size: 14px; color: #4a7c66; }
+
+        /* REDES SOCIAIS */
+        .social-section {
+            padding: 60px 100px;
+            border-bottom: 1px solid #4a7c668f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .social-section h2 { font-size: 30px; color: #1A3C34; font-weight: 700; }
+        .social-section h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+        .social-section p { color: #4a7c66; font-size: 15px; margin-top: 8px; max-width: 400px; }
+
+        .social-links { display: flex; gap: 14px; }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #4a7c6683;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #1A3C34;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover { background: #1A3C34; color: white; border-color: #1A3C34; }
+        .social-btn:hover svg { stroke: white; }
+        .social-btn svg { width: 18px; height: 18px; stroke: #1A3C34; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: 0.3s; }
+
+        /* FAQ */
+        .faq-section {
+            padding: 70px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .faq-section .section-label { margin-bottom: 14px; }
+        .faq-section h2 { font-size: 38px; color: #1A3C34; font-weight: 700; line-height: 1.2; margin-bottom: 44px; }
+        .faq-section h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #4a7c6630; border: 1px solid #4a7c6630; border-radius: 10px; overflow: hidden; }
+
+        .faq-item {
+            background: white;
+            padding: 36px 40px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .faq-item:hover { background: #f9fbfa; }
+
+        .faq-item h4 { font-size: 16px; color: #1A3C34; font-weight: 700; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; }
+        .faq-item h4 span { color: #88bdbc; font-size: 18px; flex-shrink: 0; }
+        .faq-item p { color: #4a7c66; font-size: 14px; line-height: 1.7; padding-left: 30px; }
+
+        /* CTA */
+        .cta-banner {
+            margin: 0 100px 70px 100px;
+            background-color: #1A3C34;
+            border-radius: 12px;
+            padding: 60px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cta-banner h2 { font-size: 38px; color: white; font-weight: 700; line-height: 1.2; }
+        .cta-banner h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #88bdbc; font-weight: 400; }
+        .cta-banner p { color: #88bdbc; font-size: 16px; max-width: 380px; margin-top: 12px; }
+
+        .btn-cta-white {
+            text-decoration: none;
+            background: white;
+            padding: 16px 36px;
+            border-radius: 6px;
+            color: #1A3C34;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .btn-cta-white:hover { background: #88bdbc; color: #1A3C34; }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Ecologi+ Logo">
+                <span>ECOLOGI+</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="#">Impacto</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="hero-left">
+                <span class="subtitle">FALE CONOSCO</span>
+                <h1>Vamos conversar<br>sobre o <em>futuro</em><br>das florestas.</h1>
+            </div>
+            <div class="hero-right">
+                <p>Seja para tirar dúvidas, propor parcerias ou simplesmente saber mais sobre o nosso trabalho — nossa equipe está pronta para ouvir você.</p>
+            </div>
+        </section>
+
+        <!-- CANAIS DE ATENDIMENTO -->
+        <section class="channels-section">
+            <div class="channel">
+                <div class="channel-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="channel-label">E-mail</div>
+                <h3>Escreva para nós</h3>
+                <p>Para dúvidas gerais, propostas e parcerias. Respondemos em até 2 dias úteis.</p>
+                <a href="mailto:contato@ecologlmais.org.br">contato@ecologimais.org.br</a>
+            </div>
+            <div class="channel">
+                <div class="channel-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="channel-label">Telefone</div>
+                <h3>Ligue para a equipe</h3>
+                <p>Atendimento de segunda a sexta, das 9h às 18h. Curitiba e região metropolitana.</p>
+                <a href="tel:+554132001234">(41) 3200-1234</a>
+            </div>
+            <div class="channel">
+                <div class="channel-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="channel-label">Endereço</div>
+                <h3>Venha nos visitar</h3>
+                <p>Estamos localizados no Bairro Água Verde, em Curitiba. Visitas com agendamento.</p>
+                <a href="#mapa-contato">Ver no mapa ↓</a>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO + INFO -->
+        <section class="contact-section">
+
+            <div class="contact-form-wrap">
+                <div class="section-label">Formulário</div>
+                <h2>Envie sua<br><em>mensagem.</em></h2>
+                <p>Preencha o formulário abaixo e retornaremos em até 2 dias úteis.</p>
+
+                <div id="form-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label>Sobrenome</label>
+                            <input type="text" placeholder="Seu sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Assunto</label>
+                        <select>
+                            <option value="">Selecione um assunto</option>
+                            <option>Voluntariado</option>
+                            <option>Doação</option>
+                            <option>Parceria institucional</option>
+                            <option>Imprensa & Mídia</option>
+                            <option>Educação ambiental</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea placeholder="Escreva sua mensagem aqui..."></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="lgpd">
+                        <label for="lgpd">Concordo com o uso dos meus dados para fins de contato, conforme a LGPD. Não compartilhamos suas informações com terceiros.</label>
+                    </div>
+
+                    <button class="btn-submit" onclick="enviarMensagem()">ENVIAR MENSAGEM →</button>
+                </div>
+
+                <div class="success-msg" id="success-msg">
+                    <div class="check">🌿</div>
+                    <h3>Mensagem enviada!</h3>
+                    <p>Obrigado por entrar em contato. Nossa equipe responderá em até 2 dias úteis.</p>
+                </div>
+            </div>
+
+            <div class="contact-info-wrap">
+                <div class="section-label">Localização</div>
+                <h2>Onde estamos</h2>
+                <p>Sede em Curitiba, projetos em todo o Sul do Brasil.</p>
+
+                <div id="mapa-contato"></div>
+
+                <div class="info-list">
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <strong>Endereço</strong>
+                            <span>Rua das Araucárias, 412 — Água Verde, Curitiba, PR — CEP 80620-010</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <strong>Horário de atendimento</strong>
+                            <span>Segunda a sexta — 9h às 18h<br>Sábado — 9h às 13h (somente mutirões)</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <strong>E-mail</strong>
+                            <span>contato@ecologimais.org.br</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDES SOCIAIS -->
+        <section class="social-section">
+            <div>
+                <h2>Siga a <em>floresta</em> nas redes.</h2>
+                <p>Acompanhe nossas ações, mutirões e resultados em tempo real nas redes sociais.</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-btn">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram
+                </a>
+                <a href="#" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook
+                </a>
+                <a href="#" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-label">Dúvidas frequentes</div>
+            <h2>Perguntas que a gente<br>já <em>sabe responder.</em></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><span>01</span> Como posso me tornar voluntário?</h4>
+                    <p>Acesse a página <a href="participar.html" style="color:#1A3C34;font-weight:700;">Participe</a> e preencha o formulário de voluntariado. Nossa equipe entrará em contato com as próximas datas de mutirão.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>02</span> Minha empresa pode apoiar os projetos?</h4>
+                    <p>Sim! Oferecemos modalidades de parceria corporativa com relatórios de impacto, certificados e visibilidade nos materiais do projeto. Entre em contato pelo formulário acima.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>03</span> As doações são dedutíveis do IR?</h4>
+                    <p>Estamos em processo de certificação como OSCIP. Por enquanto emitimos recibo de doação. Consulte seu contador para orientações específicas sobre sua situação fiscal.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>04</span> Posso visitar uma área de projeto?</h4>
+                    <p>Sim, realizamos visitas guiadas mensais às áreas de reflorestamento. As vagas são limitadas e precisam de agendamento prévio pelo formulário de contato.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>05</span> Vocês atuam fora do Sul do Brasil?</h4>
+                    <p>Atualmente nossos projetos estão concentrados no Paraná e em Santa Catarina. Estamos planejando expansão para o Rio Grande do Sul e São Paulo a partir de 2026.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><span>06</span> Como acompanho o impacto das doações?</h4>
+                    <p>Publicamos relatórios de impacto semestrais disponíveis publicamente no site. Doadores também recebem atualizações por e-mail com fotos e dados das áreas financiadas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-banner">
+            <div>
+                <h2>Faça parte de algo<br><em>maior que você.</em></h2>
+                <p>Seja como voluntário, doador ou parceiro — sua contribuição transforma ecossistemas e vidas.</p>
+            </div>
+            <a href="participar.html" class="btn-cta-white">QUERO PARTICIPAR →</a>
+        </div>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const mapa = L.map('mapa-contato', {
+            zoomControl: false,
+            scrollWheelZoom: false,
+            dragging: false,
+            doubleClickZoom: false,
+            attributionControl: false
+        }).setView([-25.4517, -49.2753], 14);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
+
+        const icone = L.divIcon({
+            html: `<div style="width:22px;height:22px;background:#1A3C34;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,0.3);"></div>`,
+            className: '',
+            iconSize: [22, 22],
+            iconAnchor: [11, 22],
+            popupAnchor: [0, -26]
+        });
+
+        L.marker([-25.4517, -49.2753], { icon: icone })
+            .addTo(mapa)
+            .bindPopup(`
+                <div style="padding:12px 16px;font-family:'Inter',sans-serif;">
+                    <strong style="display:block;color:#1A3C34;font-size:13px;font-weight:700;margin-bottom:3px;">🌿 Ecologi+</strong>
+                    <span style="color:#4a7c66;font-size:12px;">Água Verde, Curitiba — PR</span>
+                    <div style="display:inline-block;margin-top:8px;background:#1A3C34;color:white;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 10px;border-radius:3px;">SEDE</div>
+                </div>
+            `)
+            .openPopup();
+
+        function enviarMensagem() {
+            const lgpd = document.getElementById('lgpd');
+            if (!lgpd.checked) {
+                alert('Por favor, aceite os termos para continuar.');
+                return;
+            }
+            document.getElementById('form-content').style.display = 'none';
+            document.getElementById('success-msg').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
