@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Ecologi+ | Participe</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        .main-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #4a7c669a;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #1A3C34;
+        }
+
+        .logo img { height: 40px; margin-right: 5px; }
+
+        .nav ul { display: flex; list-style: none; gap: 40px; }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #398b77;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav ul li a:hover { color: #1A3C34; font-weight: 700; }
+
+        .btn-participar {
+            text-decoration: none;
+            border: 1px solid #497c6f;
+            padding: 12px 28px;
+            border-radius: 6px;
+            color: #1A3C34;
+            font-size: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-participar:hover { background-color: #1A3C34; color: white; }
+
+        /* =========================================
+           HERO
+        ========================================= */
+        .page-hero {
+            border-bottom: 1px solid #4a7c668f;
+            padding: 80px 100px 60px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            color: #88bdbc;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #88bdbc;
+            margin-right: 15px;
+        }
+
+        .page-hero h1 {
+            font-size: 58px;
+            color: #1A3C34;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .page-hero h1 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .hero-right p {
+            color: #4a7c66;
+            font-size: 17px;
+            max-width: 400px;
+        }
+
+        /* =========================================
+           FORMAS DE PARTICIPAR
+        ========================================= */
+        .ways-section {
+            padding: 70px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .ways-section h2 {
+            font-size: 13px;
+            color: #88bdbc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ways-section h2::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #88bdbc;
+        }
+
+        .ways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #4a7c6630;
+            border: 1px solid #4a7c6630;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .way-card {
+            background: white;
+            padding: 45px 40px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .way-card:hover { background: #f9fbfa; }
+
+        .way-card.selected {
+            background: #1A3C34;
+        }
+
+        .way-card.selected .way-icon,
+        .way-card.selected h3,
+        .way-card.selected p { color: white; }
+
+        .way-card.selected .way-tag {
+            background: #88bdbc30;
+            color: #88bdbc;
+        }
+
+        .way-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .way-card h3 {
+            font-size: 22px;
+            color: #1A3C34;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .way-card p {
+            color: #4a7c66;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .way-tag {
+            display: inline-block;
+            background: #a0c2b644;
+            color: #1A3C34;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        /* =========================================
+           FORMULÁRIO
+        ========================================= */
+        .form-section {
+            padding: 70px 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .form-info h2 {
+            font-size: 38px;
+            color: #1A3C34;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .form-info h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .form-info p {
+            color: #4a7c66;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .info-items { display: flex; flex-direction: column; gap: 20px; }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #4a7c6630;
+        }
+
+        .info-item:last-child { border-bottom: none; }
+
+        .info-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1A3C34;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #1A3C34;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .info-item span { color: #4a7c66; font-size: 14px; }
+
+        /* Formulário */
+        .form-card {
+            background: #f9fbfa;
+            border: 1px solid #4a7c6630;
+            border-radius: 10px;
+            padding: 50px 45px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1A3C34;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #4a7c6650;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #1A3C34;
+            background: white;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1A3C34;
+        }
+
+        .form-group textarea { resize: vertical; min-height: 110px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .form-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #1A3C34;
+            cursor: pointer;
+        }
+
+        .form-check label {
+            font-size: 13px;
+            color: #4a7c66;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #1A3C34;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover { background: #4a7c66; }
+
+        /* =========================================
+           SUCESSO
+        ========================================= */
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .success-msg .check {
+            font-size: 52px;
+            margin-bottom: 16px;
+        }
+
+        .success-msg h3 {
+            font-size: 26px;
+            color: #1A3C34;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .success-msg p { color: #4a7c66; font-size: 15px; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Ecologi+ Logo">
+                <span>ECOLOGI+</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="#">Impacto</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-action">
+                <a href="participar.html" class="btn-participar">PARTICIPE</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="hero-left">
+                <span class="subtitle">FAÇA PARTE</span>
+                <h1>Juntos somos<br><em>mais fortes</em><br>que o desmate.</h1>
+            </div>
+            <div class="hero-right">
+                <p>Escolha como quer contribuir — cada forma de participação é essencial para transformar ecossistemas e construir um Brasil mais verde.</p>
+            </div>
+        </section>
+
+        <!-- FORMAS DE PARTICIPAR -->
+        <section class="ways-section">
+            <h2>COMO PARTICIPAR</h2>
+            <div class="ways-grid">
+                <div class="way-card selected" onclick="selectWay(this, 'voluntario')">
+                    <span class="way-icon">🌿</span>
+                    <h3>Voluntário</h3>
+                    <p>Participe dos mutirões de plantio, trilhas de monitoramento e ações de educação ambiental.</p>
+                    <span class="way-tag">FINS DE SEMANA</span>
+                </div>
+                <div class="way-card" onclick="selectWay(this, 'doador')">
+                    <span class="way-icon">🌱</span>
+                    <h3>Doador</h3>
+                    <p>Apoie financeiramente nossos projetos. Cada real plantado se transforma em árvores reais.</p>
+                    <span class="way-tag">QUALQUER VALOR</span>
+                </div>
+                <div class="way-card" onclick="selectWay(this, 'parceiro')">
+                    <span class="way-icon">🤝</span>
+                    <h3>Parceiro</h3>
+                    <p>Conecte sua empresa ou instituição às nossas iniciativas e gere impacto com responsabilidade.</p>
+                    <span class="way-tag">EMPRESAS & ONGS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="form-section">
+            <div class="form-info">
+                <h2>Preencha o<br>formulário e<br><em>entre em contato.</em></h2>
+                <p>Nossa equipe retornará em até 2 dias úteis com todas as informações necessárias para você começar.</p>
+
+                <div class="info-items">
+                    <div class="info-item">
+                        <div class="info-dot"></div>
+                        <div>
+                            <strong>Voluntário</strong>
+                            <span>Participe de mutirões mensais em áreas de preservação no Paraná e Santa Catarina.</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-dot"></div>
+                        <div>
+                            <strong>Doador</strong>
+                            <span>Com R$30 você planta uma muda. Com R$150 você recupera 1m² de Mata Atlântica.</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-dot"></div>
+                        <div>
+                            <strong>Parceiro</strong>
+                            <span>Oferecemos relatórios de impacto, certificados e visibilidade nos projetos.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD DO FORMULÁRIO -->
+            <div class="form-card">
+                <div id="form-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label>Sobrenome</label>
+                            <input type="text" placeholder="Seu sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Como quer participar?</label>
+                        <select id="tipo-select">
+                            <option value="">Selecione uma opção</option>
+                            <option value="voluntario">Voluntário</option>
+                            <option value="doador">Doador</option>
+                            <option value="parceiro">Parceiro / Empresa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensagem (opcional)</label>
+                        <textarea placeholder="Conte um pouco sobre você ou sua empresa..."></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="lgpd">
+                        <label for="lgpd">Concordo com o uso dos meus dados para contato conforme a LGPD. Não compartilhamos seus dados com terceiros.</label>
+                    </div>
+
+                    <button class="btn-submit" onclick="enviarFormulario()">ENVIAR INSCRIÇÃO →</button>
+                </div>
+
+                <!-- MENSAGEM DE SUCESSO -->
+                <div class="success-msg" id="success-msg">
+                    <div class="check">🌳</div>
+                    <h3>Inscrição recebida!</h3>
+                    <p>Obrigado pelo seu interesse. Nossa equipe entrará em contato em até 2 dias úteis.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function selectWay(el, tipo) {
+            document.querySelectorAll('.way-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            const select = document.getElementById('tipo-select');
+            if (select) select.value = tipo;
+        }
+
+        function enviarFormulario() {
+            const lgpd = document.getElementById('lgpd');
+            if (!lgpd.checked) {
+                alert('Por favor, aceite os termos para continuar.');
+                return;
+            }
+            document.getElementById('form-content').style.display = 'none';
+            document.getElementById('success-msg').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
