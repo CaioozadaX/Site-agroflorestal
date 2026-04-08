@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Ecologi+ | Impacto</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
+
+        /* ── HEADER ── */
+        .main-header { background: #fff; border-bottom: 1px solid #4a7c669a; width: 100%; padding-top: 5px; }
+        .container { max-width: 100%; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: relative; }
+        .logo { display: flex; align-items: center; font-weight: bold; letter-spacing: 1px; color: #1A3C34; }
+        .logo img { height: 40px; margin-right: 5px; }
+        .nav { position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav ul { display: flex; list-style: none; gap: 40px; }
+        .nav ul li a { text-decoration: none; color: #398b77; font-size: 18px; font-weight: 500; transition: 0.3s; }
+        .nav ul li a:hover, .nav ul li a.active { color: #1A3C34; font-weight: 700; }
+
+        /* ── HERO ── */
+        .page-hero {
+            border-bottom: 1px solid #4a7c668f;
+            padding: 80px 100px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "IMPACTO";
+            position: absolute;
+            right: -20px;
+            top: 10px;
+            font-size: 180px;
+            font-weight: 700;
+            color: #1A3C3408;
+            line-height: 1;
+            pointer-events: none;
+            letter-spacing: -8px;
+        }
+
+        .subtitle {
+            display: flex;
+            align-items: center;
+            color: #88bdbc;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle::before { content: ""; width: 30px; height: 1px; background: #88bdbc; margin-right: 15px; }
+
+        .page-hero h1 { font-size: 58px; color: #1A3C34; line-height: 1.1; font-weight: 700; }
+        .page-hero h1 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+        .hero-right p { color: #4a7c66; font-size: 17px; max-width: 420px; }
+
+        /* ── CONTADOR ANIMADO ── */
+        .counters-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .counter-cell {
+            padding: 60px 50px;
+            border-right: 1px solid #4a7c668f;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .counter-cell:last-child { border-right: none; }
+        .counter-cell:hover { background: #f9fbfa; }
+
+        .counter-cell::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 3px;
+            background: #1A3C34;
+            width: 0;
+            transition: width 1.2s ease;
+        }
+
+        .counter-cell.animated::after { width: var(--bar-w, 70%); }
+
+        .counter-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .counter-label::before { content: ""; width: 20px; height: 1px; background: #88bdbc; }
+
+        .counter-value {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1A3C34;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .counter-value sup { font-size: 22px; }
+        .counter-unit { font-size: 14px; color: #88bdbc; font-weight: 600; }
+        .counter-desc { font-size: 13px; color: #4a7c66; margin-top: 14px; }
+
+        /* ── IMPACTO POR PROJETO ── */
+        .projects-impact {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .section-label::before { content: ""; width: 30px; height: 1px; background: #88bdbc; }
+
+        .section-title {
+            font-size: 42px;
+            color: #1A3C34;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 50px;
+        }
+
+        .section-title em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #4a7c66;
+            font-weight: 400;
+        }
+
+        .impact-bars { display: flex; flex-direction: column; gap: 0; }
+
+        .impact-row {
+            display: grid;
+            grid-template-columns: 220px 1fr 120px;
+            align-items: center;
+            gap: 30px;
+            padding: 28px 0;
+            border-bottom: 1px solid #4a7c6620;
+        }
+
+        .impact-row:last-child { border-bottom: none; }
+
+        .impact-name strong { display: block; font-size: 15px; color: #1A3C34; font-weight: 700; margin-bottom: 3px; }
+        .impact-name span { font-size: 11px; color: #88bdbc; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        .bar-track {
+            height: 6px;
+            background: #f0f4f2;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1A3C34, #4a7c66);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.4s cubic-bezier(.4,0,.2,1);
+        }
+
+        .impact-num { text-align: right; font-size: 22px; font-weight: 700; color: #1A3C34; }
+        .impact-num span { display: block; font-size: 10px; color: #a0a0a0; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* ── MAPA ── */
+        .map-section {
+            border-bottom: 1px solid #4a7c668f;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+        }
+
+        .map-info {
+            padding: 70px 60px;
+            border-right: 1px solid #4a7c668f;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .map-info h2 { font-size: 36px; color: #1A3C34; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+        .map-info h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+        .map-info > p { color: #4a7c66; font-size: 15px; margin-bottom: 40px; }
+
+        .map-legend { display: flex; flex-direction: column; gap: 14px; }
+
+        .legend-item { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #4a7c66; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+        .legend-dot.ativo { background: #1A3C34; }
+        .legend-dot.concluido { background: #4a7c66; }
+        .legend-dot.planejamento { background: #88bdbc; }
+
+        #mapa-impacto { width: 100%; height: 480px; }
+
+        /* ── CO2 / AMBIENTE ── */
+        .env-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .env-cards { display: flex; flex-direction: column; gap: 20px; }
+
+        .env-card {
+            border: 1px solid #4a7c6640;
+            border-radius: 10px;
+            padding: 30px 34px;
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .env-card:hover { box-shadow: 0 10px 30px rgba(26,60,52,0.1); transform: translateX(6px); }
+
+        .env-icon {
+            width: 46px; height: 46px;
+            background: #a0c2b644;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .env-card strong { display: block; font-size: 26px; color: #1A3C34; font-weight: 700; margin-bottom: 4px; }
+        .env-card span { font-size: 11px; color: #88bdbc; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+        .env-card p { font-size: 13px; color: #4a7c66; }
+
+        /* Donut chart (CSS puro) */
+        .donut-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .donut-wrap h2 { font-size: 36px; color: #1A3C34; font-weight: 700; line-height: 1.2; text-align: center; }
+        .donut-wrap h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #4a7c66; font-weight: 400; }
+
+        .donut-chart {
+            width: 240px; height: 240px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #1A3C34 0% 42%,
+                #4a7c66 42% 67%,
+                #88bdbc 67% 82%,
+                #a0c2b6 82% 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .donut-hole {
+            width: 150px; height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-hole strong { font-size: 32px; color: #1A3C34; font-weight: 700; line-height: 1; }
+        .donut-hole span { font-size: 10px; color: #88bdbc; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+
+        .donut-legend { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+
+        .dl-item { display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+        .dl-item-left { display: flex; align-items: center; gap: 10px; color: #4a7c66; }
+        .dl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .dl-item strong { color: #1A3C34; font-size: 14px; }
+
+        /* ── VOLUNTÁRIOS ── */
+        .volunteers-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+            background: #f9fbfa;
+        }
+
+        .volunteers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #4a7c6630;
+            border: 1px solid #4a7c6630;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        .vol-card {
+            background: white;
+            padding: 45px 40px;
+            transition: background 0.3s;
+        }
+
+        .vol-card:hover { background: #f0f5f3; }
+
+        .vol-card .vol-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+
+        .vol-card h3 { font-size: 44px; color: #1A3C34; font-weight: 700; margin-bottom: 6px; }
+        .vol-card h3 sup { font-size: 20px; }
+
+        .vol-label { font-size: 10px; font-weight: 700; color: #88bdbc; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .vol-label::before { content: ""; width: 20px; height: 1px; background: #88bdbc; }
+
+        .vol-card p { font-size: 14px; color: #4a7c66; line-height: 1.7; }
+
+        /* ── RELATÓRIOS ── */
+        .reports-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .report-card {
+            border: 1px solid #4a7c6640;
+            border-radius: 10px;
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .report-card:hover { box-shadow: 0 10px 30px rgba(26,60,52,0.1); transform: translateY(-4px); }
+
+        .report-year {
+            font-size: 10px;
+            font-weight: 700;
+            color: #88bdbc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .report-year::before { content: ""; width: 20px; height: 1px; background: #88bdbc; }
+
+        .report-card h4 { font-size: 20px; color: #1A3C34; font-weight: 700; }
+        .report-card p { font-size: 14px; color: #4a7c66; flex: 1; }
+
+        .report-link {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1A3C34;
+            border-bottom: 1px solid #4a7c6650;
+            padding-bottom: 2px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .report-card:hover .report-link { color: #4a7c66; border-color: #4a7c66; }
+
+        .report-badge {
+            display: inline-block;
+            background: #1A3C3415;
+            color: #1A3C34;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .report-badge.novo { background: #e8f5e9; color: #2e7d32; }
+
+        /* ── LINHA DO TEMPO DE IMPACTO ── */
+        .growth-section {
+            padding: 80px 100px;
+            border-bottom: 1px solid #4a7c668f;
+        }
+
+        .growth-chart {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .growth-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 80px;
+            align-items: center;
+            gap: 24px;
+            padding: 16px 0;
+            border-bottom: 1px solid #4a7c6615;
+        }
+
+        .growth-year { font-size: 12px; font-weight: 700; color: #88bdbc; letter-spacing: 1px; }
+        .growth-bar-wrap { position: relative; }
+
+        .growth-track { height: 28px; background: #f0f4f2; border-radius: 4px; overflow: hidden; }
+
+        .growth-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1A3C34 0%, #4a7c66 100%);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.4s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+        }
+
+        .growth-fill span { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 1px; white-space: nowrap; }
+        .growth-total { font-size: 16px; font-weight: 700; color: #1A3C34; text-align: right; }
+
+        /* ── CTA ── */
+        .cta-banner {
+            margin: 0 100px 70px;
+            background: #1A3C34;
+            border-radius: 12px;
+            padding: 60px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cta-banner h2 { font-size: 38px; color: white; font-weight: 700; line-height: 1.2; }
+        .cta-banner h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #88bdbc; font-weight: 400; }
+        .cta-banner p { color: #88bdbc; font-size: 16px; max-width: 380px; margin-top: 12px; }
+
+        .btn-cta-white {
+            text-decoration: none;
+            background: white;
+            padding: 16px 36px;
+            border-radius: 6px;
+            color: #1A3C34;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .btn-cta-white:hover { background: #88bdbc; color: #1A3C34; }
+
+        /* ── ANIMAÇÃO DE ENTRADA ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up { opacity: 0; }
+        .fade-up.visible { animation: fadeUp 0.7s ease forwards; }
+        .fade-up:nth-child(2) { animation-delay: 0.1s; }
+        .fade-up:nth-child(3) { animation-delay: 0.2s; }
+        .fade-up:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Ecologi+ Logo">
+                <span>ECOLOGI+</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="impacto.html" class="active">Impacto</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="hero-left">
+                <span class="subtitle">NOSSO IMPACTO</span>
+                <h1>Números que a<br><em>natureza</em><br>confirma.</h1>
+            </div>
+            <div class="hero-right">
+                <p>Cada projeto deixa rastros mensuráveis. Aqui você acompanha o que já foi plantado, recuperado e transformado desde 2018 — com transparência total e dados abertos ao público.</p>
+            </div>
+        </section>
+
+        <!-- CONTADORES -->
+        <section class="counters-section">
+            <div class="counter-cell fade-up" style="--bar-w: 80%;">
+                <div class="counter-label">Mudas</div>
+                <div class="counter-value" data-target="12400">0</div>
+                <div class="counter-unit">mudas plantadas</div>
+                <p class="counter-desc">Espécies nativas da Mata Atlântica e Floresta com Araucária distribuídas em 6 projetos ativos.</p>
+            </div>
+            <div class="counter-cell fade-up" style="--bar-w: 60%;">
+                <div class="counter-label">Área</div>
+                <div class="counter-value" data-target="280">0<sup>ha</sup></div>
+                <div class="counter-unit">hectares preservados</div>
+                <p class="counter-desc">Equivalente a mais de 380 campos de futebol de floresta protegida e em regeneração.</p>
+            </div>
+            <div class="counter-cell fade-up" style="--bar-w: 100%;">
+                <div class="counter-label">Pessoas</div>
+                <div class="counter-value" data-target="340">0</div>
+                <div class="counter-unit">voluntários ativos</div>
+                <p class="counter-desc">Cidadãos engajados que dedicaram tempo, suor e esperança aos nossos mutirões de plantio.</p>
+            </div>
+            <div class="counter-cell fade-up" style="--bar-w: 40%;">
+                <div class="counter-label">Projetos</div>
+                <div class="counter-value" data-target="6">0</div>
+                <div class="counter-unit">projetos ativos</div>
+                <p class="counter-desc">Iniciativas em andamento no Paraná e Santa Catarina, com expansão planejada para 2026.</p>
+            </div>
+        </section>
+
+        <!-- CRESCIMENTO ANO A ANO -->
+        <section class="growth-section">
+            <div class="section-label">Evolução</div>
+            <h2 class="section-title">Crescimento<br>ano a <em>ano.</em></h2>
+
+            <div class="growth-chart" id="growth-chart">
+                <div class="growth-row">
+                    <span class="growth-year">2018</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="4%"><span>INÍCIO — 120 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">120</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2019</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="12%"><span>800 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">920</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2020</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="20%"><span>1.100 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">2.020</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2021</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="38%"><span>CORREDOR ARAUCÁRIA — 1.900 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">3.920</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2022</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="54%"><span>2.400 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">6.320</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2023</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="70%"><span>ESCOLA VERDE — 2.680 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">9.000</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2024</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="88%"><span>QUINTAIS PRODUTIVOS — 2.100 MUDAS</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">11.100</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-year">2025</span>
+                    <div class="growth-bar-wrap">
+                        <div class="growth-track">
+                            <div class="growth-fill" data-w="100%" style="background: linear-gradient(90deg,#1A3C34,#4a7c66,#88bdbc)"><span>CORREDOR VERDE — 8.400 EM ANDAMENTO</span></div>
+                        </div>
+                    </div>
+                    <span class="growth-total">12.400</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACTO POR PROJETO -->
+        <section class="projects-impact">
+            <div class="section-label">Por projeto</div>
+            <h2 class="section-title">Onde cada<br>muda <em>foi plantada.</em></h2>
+
+            <div class="impact-bars" id="impact-bars">
+                <div class="impact-row">
+                    <div class="impact-name">
+                        <strong>Corredor Verde do Paraná</strong>
+                        <span>Reflorestamento</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+                    <div class="impact-num">8.400 <span>Mudas</span></div>
+                </div>
+                <div class="impact-row">
+                    <div class="impact-name">
+                        <strong>Corredor da Araucária</strong>
+                        <span>Biodiversidade</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill" data-w="23%"></div></div>
+                    <div class="impact-num">1.900 <span>Mudas</span></div>
+                </div>
+                <div class="impact-row">
+                    <div class="impact-name">
+                        <strong>Quintais Produtivos</strong>
+                        <span>Agrofloresta</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill" data-w="25%"></div></div>
+                    <div class="impact-num">2.100 <span>Mudas</span></div>
+                </div>
+                <div class="impact-row">
+                    <div class="impact-name">
+                        <strong>Nascentes Vivas</strong>
+                        <span>Água & Solo</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill" data-w="3%"></div></div>
+                    <div class="impact-num">18 <span>Nascentes</span></div>
+                </div>
+                <div class="impact-row">
+                    <div class="impact-name">
+                        <strong>Rio Limpo Iguaçu</strong>
+                        <span>Mata Ciliar</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill" data-w="0%"></div></div>
+                    <div class="impact-num">40 km <span>Extensão</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPA -->
+        <section class="map-section">
+            <div class="map-info">
+                <div>
+                    <div class="section-label">Território</div>
+                    <h2>Onde atuamos<br>no <em>Sul do Brasil.</em></h2>
+                    <p>Nossos projetos cobrem o Paraná e Santa Catarina, com expansão planejada para o Rio Grande do Sul e São Paulo em 2026.</p>
+                </div>
+
+                <div class="map-legend">
+                    <div class="legend-item"><div class="legend-dot ativo"></div> Projeto ativo</div>
+                    <div class="legend-item"><div class="legend-dot concluido"></div> Projeto concluído</div>
+                    <div class="legend-item"><div class="legend-dot planejamento"></div> Em planejamento</div>
+                </div>
+            </div>
+            <div id="mapa-impacto"></div>
+        </section>
+
+        <!-- IMPACTO AMBIENTAL + DONUT -->
+        <section class="env-section">
+            <div>
+                <div class="section-label">Meio ambiente</div>
+                <h2 class="section-title">O que nossa<br>floresta<br><em>gera.</em></h2>
+
+                <div class="env-cards">
+                    <div class="env-card">
+                        <div class="env-icon">🌿</div>
+                        <div>
+                            <strong>248 t</strong>
+                            <span>CO₂ capturado / ano</span>
+                            <p>Estimativa de sequestro de carbono pelas áreas restauradas, calculada com metodologia IPCC.</p>
+                        </div>
+                    </div>
+                    <div class="env-card">
+                        <div class="env-icon">💧</div>
+                        <div>
+                            <strong>18</strong>
+                            <span>Nascentes protegidas</span>
+                            <p>Fontes de água restauradas que abastecem comunidades rurais em 3 municípios do Paraná.</p>
+                        </div>
+                    </div>
+                    <div class="env-card">
+                        <div class="env-icon">🦋</div>
+                        <div>
+                            <strong>+60</strong>
+                            <span>Espécies monitoradas</span>
+                            <p>Fauna e flora catalogadas nas áreas restauradas, incluindo espécies ameaçadas de extinção.</p>
+                        </div>
+                    </div>
+                    <div class="env-card">
+                        <div class="env-icon">🌍</div>
+                        <div>
+                            <strong>54</strong>
+                            <span>Famílias beneficiadas</span>
+                            <p>Agricultores familiares integrados ao programa Quintais Produtivos com sistemas agroflorestais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="donut-wrap">
+                <div>
+                    <div class="section-label">Distribuição</div>
+                    <h2 class="section-title" style="font-size:32px;">Como os recursos<br>são <em>aplicados.</em></h2>
+                </div>
+
+                <div class="donut-chart">
+                    <div class="donut-hole">
+                        <strong>100%</strong>
+                        <span>Transparência</span>
+                    </div>
+                </div>
+
+                <div class="donut-legend">
+                    <div class="dl-item">
+                        <div class="dl-item-left"><div class="dl-dot" style="background:#1A3C34"></div> Plantio e campo</div>
+                        <strong>42%</strong>
+                    </div>
+                    <div class="dl-item">
+                        <div class="dl-item-left"><div class="dl-dot" style="background:#4a7c66"></div> Monitoramento</div>
+                        <strong>25%</strong>
+                    </div>
+                    <div class="dl-item">
+                        <div class="dl-item-left"><div class="dl-dot" style="background:#88bdbc"></div> Educação ambiental</div>
+                        <strong>15%</strong>
+                    </div>
+                    <div class="dl-item">
+                        <div class="dl-item-left"><div class="dl-dot" style="background:#a0c2b6"></div> Administração</div>
+                        <strong>18%</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLUNTÁRIOS -->
+        <section class="volunteers-section">
+            <div class="section-label">Comunidade</div>
+            <h2 class="section-title">As pessoas por<br>trás da <em>floresta.</em></h2>
+
+            <div class="volunteers-grid">
+                <div class="vol-card">
+                    <span class="vol-icon">🌿</span>
+                    <div class="vol-label">Voluntários</div>
+                    <h3>340</h3>
+                    <p>Voluntários ativos em mutirões mensais, trilhas de monitoramento e ações de educação ambiental em toda a região Sul.</p>
+                </div>
+                <div class="vol-card">
+                    <span class="vol-icon">📚</span>
+                    <div class="vol-label">Estudantes</div>
+                    <h3>1.200</h3>
+                    <p>Alunos de escolas públicas alcançados pelo programa Escola Verde, formando a próxima geração de guardiões da floresta.</p>
+                </div>
+                <div class="vol-card">
+                    <span class="vol-icon">🤝</span>
+                    <div class="vol-label">Parceiros</div>
+                    <h3>8<sup>+</sup></h3>
+                    <p>Instituições parceiras — universidades, prefeituras e empresas — que amplificam nosso impacto com recursos e expertise científica.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATÓRIOS -->
+        <section class="reports-section">
+            <div class="section-label">Transparência</div>
+            <h2 class="section-title">Relatórios de<br><em>impacto abertos.</em></h2>
+
+            <div class="reports-grid">
+                <a href="#" class="report-card">
+                    <div>
+                        <span class="report-year">2025 — 1º Semestre</span>
+                        <span class="report-badge novo">Novo</span>
+                    </div>
+                    <h4>Relatório de Impacto</h4>
+                    <p>Dados atualizados do Corredor Verde, Quintais Produtivos e expansão do programa Escola Verde.</p>
+                    <span class="report-link">Baixar PDF →</span>
+                </a>
+                <a href="#" class="report-card">
+                    <div>
+                        <span class="report-year">2024 — Anual</span>
+                        <span class="report-badge">2024</span>
+                    </div>
+                    <h4>Relatório de Impacto</h4>
+                    <p>Balanço completo de 2024: plantio, voluntariado, monitoramento científico e resultados financeiros.</p>
+                    <span class="report-link">Baixar PDF →</span>
+                </a>
+                <a href="#" class="report-card">
+                    <div>
+                        <span class="report-year">2023 — Anual</span>
+                        <span class="report-badge">2023</span>
+                    </div>
+                    <h4>Relatório de Impacto</h4>
+                    <p>Ano de lançamento do Escola Verde e expansão das parcerias institucionais com UFPR e IAT-PR.</p>
+                    <span class="report-link">Baixar PDF →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-banner">
+            <div>
+                <h2>Ajude a floresta<br>a <em>crescer mais.</em></h2>
+                <p>Cada muda plantada é um dado que muda o futuro. Seja voluntário, doador ou parceiro — seu impacto começa aqui.</p>
+            </div>
+            <a href="participar.html" class="btn-cta-white">QUERO PARTICIPAR →</a>
+        </div>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        /* ── MAPA ── */
+        const mapa = L.map('mapa-impacto', {
+            zoomControl: true,
+            scrollWheelZoom: false,
+            attributionControl: false
+        }).setView([-26.0, -50.5], 7);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
+
+        const makeIcon = (cor) => L.divIcon({
+            html: `<div style="width:18px;height:18px;background:${cor};border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,0.3);"></div>`,
+            className: '', iconSize: [18, 18], iconAnchor: [9, 18], popupAnchor: [0, -22]
+        });
+
+        const projetos = [
+            { lat: -24.35, lng: -50.80, cor: '#1A3C34', nome: '🌳 Corredor Verde do Paraná', local: 'Rio Tibagi, PR', tag: 'EM ANDAMENTO' },
+            { lat: -26.12, lng: -50.31, cor: '#4a7c66', nome: '🦋 Corredor da Araucária', local: 'Três Barras, SC', tag: 'CONCLUÍDO' },
+            { lat: -25.43, lng: -49.27, cor: '#1A3C34', nome: '📚 Escola Verde', local: 'Curitiba, PR', tag: 'EM ANDAMENTO' },
+            { lat: -25.80, lng: -51.00, cor: '#1A3C34', nome: '🌱 Quintais Produtivos', local: 'Guarapuava, PR', tag: 'EM ANDAMENTO' },
+            { lat: -25.75, lng: -49.60, cor: '#4a7c66', nome: '💧 Nascentes Vivas', local: 'Região de Curitiba, PR', tag: 'CONCLUÍDO' },
+            { lat: -25.50, lng: -49.12, cor: '#88bdbc', nome: '🌊 Rio Limpo Iguaçu', local: 'Região Metropolitana, PR', tag: 'PLANEJAMENTO' },
+        ];
+
+        projetos.forEach(p => {
+            L.marker([p.lat, p.lng], { icon: makeIcon(p.cor) })
+                .addTo(mapa)
+                .bindPopup(`
+                    <div style="padding:12px 16px;font-family:'Inter',sans-serif;">
+                        <strong style="display:block;color:#1A3C34;font-size:13px;font-weight:700;margin-bottom:3px;">${p.nome}</strong>
+                        <span style="color:#4a7c66;font-size:12px;">${p.local}</span>
+                        <div style="display:inline-block;margin-top:8px;background:#1A3C34;color:white;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 10px;border-radius:3px;">${p.tag}</div>
+                    </div>
+                `);
+        });
+
+        /* ── INTERSECTION OBSERVER (barras + contadores) ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                const el = entry.target;
+
+                // Células de contador
+                if (el.classList.contains('counter-cell')) {
+                    el.classList.add('animated');
+                    const valEl = el.querySelector('.counter-value');
+                    const target = parseInt(valEl.dataset.target);
+                    const sup = valEl.querySelector('sup') ? valEl.querySelector('sup').outerHTML : '';
+                    let current = 0;
+                    const step = Math.ceil(target / 60);
+                    const timer = setInterval(() => {
+                        current = Math.min(current + step, target);
+                        valEl.innerHTML = current.toLocaleString('pt-BR') + sup;
+                        if (current >= target) clearInterval(timer);
+                    }, 24);
+                }
+
+                // Barras de impacto
+                if (el.id === 'impact-bars') {
+                    el.querySelectorAll('.bar-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.w;
+                    });
+                }
+
+                // Barras de crescimento
+                if (el.id === 'growth-chart') {
+                    el.querySelectorAll('.growth-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.w;
+                    });
+                }
+
+                // Fade up
+                if (el.classList.contains('fade-up')) {
+                    el.classList.add('visible');
+                }
+
+                observer.unobserve(el);
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.counter-cell, #impact-bars, #growth-chart, .fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
