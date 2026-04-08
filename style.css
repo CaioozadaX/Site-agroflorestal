@@ -14,9 +14,7 @@ body {
     line-height: 1.6;
 }
 
-/* =========================================
-   2. HEADER (CABEÇALHO)
-   ========================================= */
+/*  2. HEADER (CABEÇALHO) */
 .main-header {
     background-color: #ffffff;
     border-bottom: 1px solid #4a7c669a;
@@ -39,7 +37,7 @@ body {
     gap: 10px;
     font-weight: bold;
     letter-spacing: 1px;
-    color: #1A3C34; /* Verde escuro */
+    color: #1A3C34; 
 }
 
 .logo img {
@@ -57,14 +55,39 @@ body {
     color: #398b77;
     font-size: 18px;
     font-weight: 500;
-    transition: 0.3s;
+    transform: translateX(400px) scale(1);
+    transition: transform 0.3s ease;
     
     
 }
 
 .nav ul li a:hover {
     color: #4a7c66;
+    transform: translateX(400px) scale(1.1);
+    animation: navHover 0.4s ease;
+    animation: navEnter 0.3s ease forwards;
+
+    
 }
+
+@keyframes navEnter {
+    from {
+        transform: translateX(400px) scale(1);
+    }
+    to {
+        transform: translateX(400px) scale(1.1);
+    }
+}
+
+@keyframes navleave {
+    from {
+        transform: translateX(400px) scale(1);
+    }
+    to {
+        transform: translateX(400px) scale(1.1);
+    }
+}
+
 
 .btn-participar {
     text-decoration: none;
@@ -124,18 +147,18 @@ body {
 .subtitle {
     display: flex;
     align-items: center;
-    color: #88bdbc;
+    color: #5b968d;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: 2px;
-    margin-bottom: 25px;
+    margin-bottom: 45px;
 }
 
 .subtitle::before {
     content: "";
-    width: 30px;
+    width: 40px;
     height: 1px;
-    background: #88bdbc;
+    background: #5b968d;
     margin-right: 15px;
 }
 
