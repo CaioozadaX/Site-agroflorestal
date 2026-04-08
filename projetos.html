@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <title>Ecologi+ | Projetos</title>
     <style>
         /* =========================================
            RESET & BASE
         ========================================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
@@ -37,6 +48,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
+            position: relative;
         }
 
         .logo {
@@ -51,6 +63,12 @@
             height: 40px;
             background: transparent;
             margin-right: 5px;
+        }
+
+        .nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav ul {
@@ -71,22 +89,6 @@
         .nav ul li a.active {
             color: #1A3C34;
             font-weight: 700;
-        }
-
-        .btn-participar {
-            text-decoration: none;
-            border: 1px solid #497c6f;
-            padding: 12px 28px;
-            border-radius: 6px;
-            color: #1A3C34;
-            font-size: 12px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-participar:hover {
-            background-color: #1A3C34;
-            color: white;
         }
 
         /* =========================================
@@ -234,11 +236,25 @@
             font-size: 52px;
         }
 
-        .card-image-inner.bg1 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); }
-        .card-image-inner.bg2 { background: linear-gradient(135deg, #b2dfdb 0%, #80cbc4 100%); }
-        .card-image-inner.bg3 { background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%); }
-        .card-image-inner.bg4 { background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%); }
-        .card-image-inner.bg5 { background: linear-gradient(135deg, #b2ebf2 0%, #80deea 100%); }
+        .card-image-inner.bg1 {
+            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+        }
+
+        .card-image-inner.bg2 {
+            background: linear-gradient(135deg, #b2dfdb 0%, #80cbc4 100%);
+        }
+
+        .card-image-inner.bg3 {
+            background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%);
+        }
+
+        .card-image-inner.bg4 {
+            background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);
+        }
+
+        .card-image-inner.bg5 {
+            background: linear-gradient(135deg, #b2ebf2 0%, #80deea 100%);
+        }
 
         .card-tag {
             position: absolute;
@@ -441,6 +457,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
@@ -460,10 +477,6 @@
                     <li><a href="#">Contato</a></li>
                 </ul>
             </nav>
-
-            <div class="header-action">
-                <a href="#" class="btn-participar">PARTICIPE</a>
-            </div>
         </div>
     </header>
 
@@ -476,7 +489,8 @@
                 <h1>Ações que<br><em>transformam</em><br>o território.</h1>
             </div>
             <div class="page-hero-right">
-                <p>Conheça as iniciativas que estamos desenvolvendo para recuperar ecossistemas, plantar mudas e fortalecer comunidades sustentáveis em todo o Brasil.</p>
+                <p>Conheça as iniciativas que estamos desenvolvendo para recuperar ecossistemas, plantar mudas e
+                    fortalecer comunidades sustentáveis em todo o Brasil.</p>
                 <a href="#projetos" class="btn-participar">VER TODOS →</a>
             </div>
         </section>
@@ -505,7 +519,8 @@
                     </div>
                     <div class="card-body">
                         <h2>Corredor Verde do Paraná</h2>
-                        <p>Restauração de 120 hectares de Mata Atlântica degradada ao longo do rio Tibagi, reconectando fragmentos florestais e protegendo nascentes essenciais para comunidades rurais.</p>
+                        <p>Restauração de 120 hectares de Mata Atlântica degradada ao longo do rio Tibagi, reconectando
+                            fragmentos florestais e protegendo nascentes essenciais para comunidades rurais.</p>
                         <div class="progress-bar-wrap">
                             <div class="progress-label">
                                 <span>Progresso</span>
@@ -544,7 +559,8 @@
                     </div>
                     <div class="card-body">
                         <h2>Nascentes Vivas</h2>
-                        <p>Recuperação e cercamento de 18 nascentes em propriedades rurais do interior do Paraná, beneficiando 3 municípios.</p>
+                        <p>Recuperação e cercamento de 18 nascentes em propriedades rurais do interior do Paraná,
+                            beneficiando 3 municípios.</p>
                         <div class="card-footer">
                             <div class="card-stats">
                                 <div class="stat-item">
@@ -570,7 +586,8 @@
                     </div>
                     <div class="card-body">
                         <h2>Quintais Produtivos</h2>
-                        <p>Implantação de sistemas agroflorestais em pequenas propriedades familiares, unindo produção de alimentos e conservação.</p>
+                        <p>Implantação de sistemas agroflorestais em pequenas propriedades familiares, unindo produção
+                            de alimentos e conservação.</p>
                         <div class="progress-bar-wrap">
                             <div class="progress-label">
                                 <span>Progresso</span>
@@ -605,7 +622,8 @@
                     </div>
                     <div class="card-body">
                         <h2>Escola Verde</h2>
-                        <p>Programa de educação ambiental em escolas públicas, formando jovens agentes da sustentabilidade em Curitiba e região.</p>
+                        <p>Programa de educação ambiental em escolas públicas, formando jovens agentes da
+                            sustentabilidade em Curitiba e região.</p>
                         <div class="card-footer">
                             <div class="card-stats">
                                 <div class="stat-item">
@@ -631,7 +649,8 @@
                     </div>
                     <div class="card-body">
                         <h2>Rio Limpo Iguaçu</h2>
-                        <p>Projeto de recuperação de mata ciliar e monitoramento da qualidade da água ao longo de 40 km do Rio Iguaçu.</p>
+                        <p>Projeto de recuperação de mata ciliar e monitoramento da qualidade da água ao longo de 40 km
+                            do Rio Iguaçu.</p>
                         <div class="card-footer">
                             <div class="card-stats">
                                 <div class="stat-item">
@@ -651,13 +670,16 @@
                 <!-- Card grande 2 -->
                 <div class="project-card featured">
                     <div class="card-image">
-                        <div class="card-image-inner bg1" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); font-size: 60px;">🦋</div>
+                        <div class="card-image-inner bg1"
+                            style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); font-size: 60px;">🦋
+                        </div>
                         <span class="card-tag">BIODIVERSIDADE</span>
                         <span class="card-status concluido">● CONCLUÍDO</span>
                     </div>
                     <div class="card-body">
                         <h2>Corredor da Araucária</h2>
-                        <p>Reintrodução e monitoramento de espécies nativas da Floresta com Araucária, com plantio de 1.900 mudas de araucária e espécies associadas em áreas estratégicas do Paraná.</p>
+                        <p>Reintrodução e monitoramento de espécies nativas da Floresta com Araucária, com plantio de
+                            1.900 mudas de araucária e espécies associadas em áreas estratégicas do Paraná.</p>
                         <div class="progress-bar-wrap">
                             <div class="progress-label">
                                 <span>Concluído</span>
@@ -713,4 +735,5 @@
     </script>
 
 </body>
+
 </html>

@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <title>Ecologi+ | Participe</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
@@ -33,6 +44,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
+            position: relative;
         }
 
         .logo {
@@ -43,9 +55,22 @@
             color: #1A3C34;
         }
 
-        .logo img { height: 40px; margin-right: 5px; }
+        .logo img {
+            height: 40px;
+            margin-right: 5px;
+        }
 
-        .nav ul { display: flex; list-style: none; gap: 40px; }
+        .nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
 
         .nav ul li a {
             text-decoration: none;
@@ -55,20 +80,11 @@
             transition: 0.3s;
         }
 
-        .nav ul li a:hover { color: #1A3C34; font-weight: 700; }
-
-        .btn-participar {
-            text-decoration: none;
-            border: 1px solid #497c6f;
-            padding: 12px 28px;
-            border-radius: 6px;
+        .nav ul li a:hover {
             color: #1A3C34;
-            font-size: 12px;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 700;
         }
 
-        .btn-participar:hover { background-color: #1A3C34; color: white; }
 
         /* =========================================
            HERO
@@ -163,7 +179,9 @@
             transition: background 0.3s;
         }
 
-        .way-card:hover { background: #f9fbfa; }
+        .way-card:hover {
+            background: #f9fbfa;
+        }
 
         .way-card.selected {
             background: #1A3C34;
@@ -171,7 +189,9 @@
 
         .way-card.selected .way-icon,
         .way-card.selected h3,
-        .way-card.selected p { color: white; }
+        .way-card.selected p {
+            color: white;
+        }
 
         .way-card.selected .way-tag {
             background: #88bdbc30;
@@ -240,7 +260,11 @@
             margin-bottom: 40px;
         }
 
-        .info-items { display: flex; flex-direction: column; gap: 20px; }
+        .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
         .info-item {
             display: flex;
@@ -250,7 +274,9 @@
             border-bottom: 1px solid #4a7c6630;
         }
 
-        .info-item:last-child { border-bottom: none; }
+        .info-item:last-child {
+            border-bottom: none;
+        }
 
         .info-dot {
             width: 10px;
@@ -269,7 +295,10 @@
             margin-bottom: 3px;
         }
 
-        .info-item span { color: #4a7c66; font-size: 14px; }
+        .info-item span {
+            color: #4a7c66;
+            font-size: 14px;
+        }
 
         /* Formulário */
         .form-card {
@@ -314,7 +343,10 @@
             border-color: #1A3C34;
         }
 
-        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
 
         .form-row {
             display: grid;
@@ -359,7 +391,9 @@
             transition: 0.3s;
         }
 
-        .btn-submit:hover { background: #4a7c66; }
+        .btn-submit:hover {
+            background: #4a7c66;
+        }
 
         /* =========================================
            SUCESSO
@@ -382,9 +416,13 @@
             margin-bottom: 10px;
         }
 
-        .success-msg p { color: #4a7c66; font-size: 15px; }
+        .success-msg p {
+            color: #4a7c66;
+            font-size: 15px;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
@@ -403,9 +441,6 @@
                     <li><a href="#">Contato</a></li>
                 </ul>
             </nav>
-            <div class="header-action">
-                <a href="participar.html" class="btn-participar">PARTICIPE</a>
-            </div>
         </div>
     </header>
 
@@ -418,7 +453,8 @@
                 <h1>Juntos somos<br><em>mais fortes</em><br>que o desmate.</h1>
             </div>
             <div class="hero-right">
-                <p>Escolha como quer contribuir — cada forma de participação é essencial para transformar ecossistemas e construir um Brasil mais verde.</p>
+                <p>Escolha como quer contribuir — cada forma de participação é essencial para transformar ecossistemas e
+                    construir um Brasil mais verde.</p>
             </div>
         </section>
 
@@ -451,14 +487,16 @@
         <section class="form-section">
             <div class="form-info">
                 <h2>Preencha o<br>formulário e<br><em>entre em contato.</em></h2>
-                <p>Nossa equipe retornará em até 2 dias úteis com todas as informações necessárias para você começar.</p>
+                <p>Nossa equipe retornará em até 2 dias úteis com todas as informações necessárias para você começar.
+                </p>
 
                 <div class="info-items">
                     <div class="info-item">
                         <div class="info-dot"></div>
                         <div>
                             <strong>Voluntário</strong>
-                            <span>Participe de mutirões mensais em áreas de preservação no Paraná e Santa Catarina.</span>
+                            <span>Participe de mutirões mensais em áreas de preservação no Paraná e Santa
+                                Catarina.</span>
                         </div>
                     </div>
                     <div class="info-item">
@@ -519,7 +557,8 @@
 
                     <div class="form-check">
                         <input type="checkbox" id="lgpd">
-                        <label for="lgpd">Concordo com o uso dos meus dados para contato conforme a LGPD. Não compartilhamos seus dados com terceiros.</label>
+                        <label for="lgpd">Concordo com o uso dos meus dados para contato conforme a LGPD. Não
+                            compartilhamos seus dados com terceiros.</label>
                     </div>
 
                     <button class="btn-submit" onclick="enviarFormulario()">ENVIAR INSCRIÇÃO →</button>
@@ -556,4 +595,5 @@
     </script>
 
 </body>
+
 </html>
