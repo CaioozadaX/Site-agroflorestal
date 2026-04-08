@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Ecologi+</title>
 </head>
@@ -50,27 +51,66 @@
 
                 <div class="content content-right">
                     <div class="card">
-                        <h3>12.400</h3>
+                        <h3>3.000.000</h3>
                         <p>MUDAS PLANTADAS</p>
                         <div class="line1"></div>
                     </div>
 
                     <div class="card">
-                        <h3>280 <span>ha (Hectares)</span></h3>
+                        <h3>4.385<span>ha (Hectares)</span></h3>
                         <p>ÁREA PRESERVADA</p>
                         <div class="line2"></div>
                     </div>
 
-                    <div class="card">
-                        <h3>340</h3>
-                        <p>VOLUNTÁRIOS ATIVOS</p>
-                        <div class="line3"></div>
+                    <div class="card card-mapa">
+                        <div id="mapa-home"></div>
+                        <span class="mapa-tag">FLORESTA NACIONAL — SC, BR</span>
                     </div>
+
                 </div>
 
             </div>
         </section>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const mapa = L.map('mapa-home', {
+    zoomControl: false,
+    scrollWheelZoom: false,
+    dragging: false,        /* mapa fixo, não arrasta — fica elegante no card */
+    doubleClickZoom: false,
+    attributionControl: false
+  }).setView([-26.1172, -50.3081], 13);  /* Três Barras, SC */
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
+
+  const icone = L.divIcon({
+    html: `<div style="
+      width:22px; height:22px;
+      background:#1A3C34;
+      border-radius:50% 50% 50% 0;
+      transform:rotate(-45deg);
+      border:3px solid #fff;
+      box-shadow:0 3px 10px rgba(0,0,0,0.3);
+    "></div>`,
+    className: '',
+    iconSize: [22, 22],
+    iconAnchor: [11, 22],
+    popupAnchor: [0, -26]
+  });
+
+  L.marker([-26.1172, -50.3081], { icon: icone })
+    .addTo(mapa)
+    .bindPopup(`
+      <div class="popup-inner">
+        <strong>🌲 Floresta Nacional de Três Barras</strong>
+        <span>Três Barras, Santa Catarina</span>
+        <div class="tag">ÁREA PRESERVADA</div>
+      </div>
+    `)
+    .openPopup();
+
+</script>
 </body>
 </html>
