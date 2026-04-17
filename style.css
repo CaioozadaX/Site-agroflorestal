@@ -341,6 +341,31 @@ body {
     background-color: #1A3C34;
 }
 
+/* BARRA DE PROGRESSO */
+
+    .progress-bar {
+    height: 4px;
+    background: #e8efe8;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #52b788, #1A3C34);
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #9ab5a5;
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+}
+
 
 .card-mapa {
     padding: 0 !important;
