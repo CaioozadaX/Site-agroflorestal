@@ -211,10 +211,15 @@ body {
     display: block;
     margin: 15px auto 0 auto;
     text-align: center;
+    transition: transform 0.25s ease, color 0.25s ease;
     
     
 }
 
+.btn-secondary:hover {
+    color: #497c6f;
+    transform: scale(1.15);
+}
 /* =========================================
    5. CARDS DA DIREITA
    ========================================= */
