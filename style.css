@@ -408,6 +408,57 @@ body {
   .popup-inner span { color: #4a7c66; font-size: 12px; }
   .popup-inner .tag { display:inline-block; margin-top:8px; background:#1A3C34; color:white; font-size:9px; font-weight:700; letter-spacing:1.5px; padding:3px 10px; border-radius:3px; }
 
+  .partners-strip {
+    background: #f8fbf9;
+
+    border-top: 1px solid #ddeedd;
+    border-bottom: 1px solid #ddeedd;
+    padding: 18px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
+/* FAIXA DE PARCEIROS */
+
+.partners-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: #35b46e;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.partners-logos {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.partners-logos span {
+    font-size: 11px;
+    font-weight: 700;
+    color: #27754d;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    transition: transform 0.2s ease, color 0.2s ease; 
+    cursor: default;
+    
+}
+
+.partners-logos span:hover {
+    opacity: 1;
+    color: #2d6a4f;
+    transform: scale(1.15);
+}
+
+
+
+
 
 .stats-banner {
     background-color: #1A3C34; 
