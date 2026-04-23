@@ -457,6 +457,19 @@ body {
 }
 
 
+/* NOVO DO LADO APOIADO POR */
+
+.new-tag {
+    background: #ffe082;
+    color: #7a4f00;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-left: 6px;
+}
+
 
 
 
