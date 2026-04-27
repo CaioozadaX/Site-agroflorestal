@@ -304,9 +304,9 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   const mapa = L.map('mapa-home', {
-    zoomControl: false,
-    scrollWheelZoom: false,
-    dragging: false,        /* mapa fixo, não arrasta — fica elegante no card */
+    zoomControl: true,
+    scrollWheelZoom: true,
+    dragging: true, /* mapa fixo, não arrasta — fica elegante no card */
     doubleClickZoom: false,
     attributionControl: false
   }).setView([-26.1172, -50.3081], 13);  /* Três Barras, SC */
@@ -338,6 +338,11 @@
       </div>
     `)
     .openPopup();
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-header')
+          .classList.toggle('scrolled', window.scrollY > 10);
+  });
 
 </script>
 </body>
