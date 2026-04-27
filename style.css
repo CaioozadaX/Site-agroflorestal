@@ -98,7 +98,7 @@ body {
 }
 
 .arrow {
-    font-size: 9px;
+    font-size: 25px;
     opacity: 0.5;
     transition: transform 0.22s ease;
     display: inline-block;
